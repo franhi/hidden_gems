@@ -5,4 +5,7 @@ class Post < ApplicationRecord
   has_many :been_theres
   has_many :saves
   has_many :reports
+  CATEGORIES = ["activites", "food/drinks"]
+  STATUS = ["temporary", "permanent"]
+
 end
