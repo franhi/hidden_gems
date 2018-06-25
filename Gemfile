@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'cloudinary'
+gem 'carrierwave'
+gem 'faker'
 gem 'devise'
 gem 'bootsnap', require: false
 gem 'figaro'
