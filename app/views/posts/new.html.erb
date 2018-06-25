@@ -1,2 +1,19 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+
+
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+    <%= f.input :title %>
+    Category: <%= select_tag "category", options_for_select(Post::CATEGORIES) %>
+    <%= f.input :description %>
+    <%= f.input :location %>
+    Status: <%= select_tag "status", options_for_select(Post::STATUS) %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :begin_date %>
+    <%= f.input :end_date %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
