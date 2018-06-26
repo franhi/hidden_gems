@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :been_theres
   has_many :saves
   has_many :reports
-
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

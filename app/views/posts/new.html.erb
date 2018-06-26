@@ -8,12 +8,12 @@
     <%= f.input :title %>
     Category: <%= f.select :category, Post::CATEGORIES %>
     <%= f.input :description %>
-    <%= f.input :location %>
-    Status: <%= f.select :status, Post::STATUS %>
+    <%= f.input :address %>
+    Status: <%= f.select :status, Post::STATUS, value: 'permanent' %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :begin_date %>
-    <%= f.input :end_date %>
+    <%= f.input :begin_date, wrapper_html: { class: "hide-date" }  %>
+    <%= f.input :end_date, wrapper_html: {  class: "hide-date" } %>
     <%= f.button :submit, class: "btn btn-primary" %>
 
 <% end %>

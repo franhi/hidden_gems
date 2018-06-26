@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.all
   end
@@ -15,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save!
+  if @post.save!
       redirect_to post_path(@post)
     else
       render :new
@@ -45,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :category, :location, :description, :photo, :status, :begin_date, :end_date)
+    params.require(:post).permit(:title, :category, :address, :description, :photo, :status, :begin_date, :end_date)
   end
 
 end
