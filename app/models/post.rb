@@ -9,9 +9,7 @@ class Post < ApplicationRecord
   has_many :saves
   has_many :reports
 
-  CATEGORIES = ["activites", "food/drinks"]
+  CATEGORIES = ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"]
   STATUS = ["temporary", "permanent"]
-
-
 
 end

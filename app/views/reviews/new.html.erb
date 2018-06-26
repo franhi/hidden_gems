@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Review for <%= post.name %></h1>
+  <h1>Review for <%= @post.title %></h1>
 
   <div>
     <%= simple_form_for [@user, @post, @review] do |f| %>
@@ -7,12 +7,18 @@
 
       <div>
         <%= f.input :description %>
+        <p>rating</p>
         <%= f.select :rating, [1,2,3,4,5] %>
       </div>
-
-      <<div>
-        <%= f.button :submit, class "btn btn-primary" %>
+      <p></p>
+      <div>
+        <%= f.button :submit, class: "btn btn-primary" %>
       </div>
-    <%= end %>
+      <p></p>
+      <div>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+      </div>
+    <% end %>
   </div>
 </div>

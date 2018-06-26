@@ -1,17 +1,16 @@
 class ReviewsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
     @review = Review.new
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @post = Event.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     @review = Review.new
+    @review.user_id = current_user.id
     @review.post = @post
-    if @review.save
-      redirect_to user_post_path(@user, @path)
+    if @review.save!
+      redirect_to post_path(@post)
     else
       render :new
     end
