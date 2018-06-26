@@ -12,4 +12,10 @@ class Post < ApplicationRecord
   CATEGORIES = ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"]
   STATUS = ["temporary", "permanent"]
 
+  include PgSearch
+  pg_search_scope :search_post,
+    against: [ :title, :category, :status, :address, :begin_date, :end_date ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
