@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @review = Review.new
+    @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.post = @post
     if @review.save!
@@ -25,6 +25,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:description, :rating)
+    params.require(:review).permit(:title, :description, :rating, :photo)
   end
 end
