@@ -1,0 +1,17 @@
+<% post.reviews.each do |review| %>
+  <h4><%= link_to review.description, post_review_path(review) %><br>
+    Submitted <%= time_ago_in_words(review.created_at) %>
+    by <%= review.user.email %>
+  </h4>
+
+  <%= link_to like_post_review_path(review), method: :put do %>
+    Upvote
+    <%= review.get_upvotes.size %>
+  <% end %>
+
+  <%= link_to dislike_post_review_path(review), method: :put do %>
+    Downvote
+    <%= review.get_downvotes.size %>
+  <% end %>
+
+<% end %>
