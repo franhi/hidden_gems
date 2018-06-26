@@ -35,7 +35,7 @@ User.create!(email: "erland@erland.com", password: "lewagon", address: "antwerp"
       Post.create!(
       description: Faker::Hipster.paragraph,
       category: ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"].sample,
-      title: ["Buffalo's in brussels", "exclusive rooftop-party", "Le Wagon demo day!", "crazy dance-off", "haunted castle", "Rue D'Isabelle", "tropismes", "madame pipi", "la pasionaria", "king albert's jacket", "urban rooms", "druum", "parvis de saint-gilles", "marolles", "matongé", "le 203", "PeÏ et Meï", "Bcentral's coffee", "The mysterious teachers of Le Wagon", "Who's Ana", "het Mim", "Play-Label"].sample,
+      title: ["Buffalo's in brussels", "exclusive rooftop-party", "Le Wagon demo day!", "crazy dance-off", "haunted castle", "Rue D'Isabelle", "tropismes", "la pasionaria", "king albert's jacket", "urban rooms", "druum", "parvis de saint-gilles", "marolles", "matongé", "le 203", "PeÏ et Meï", "Bcentral's coffee", "The mysterious teachers of Le Wagon", "Who's Ana", "het Mim", "Play-Label"].sample,
       status: status,
       address: ["beursplein 3, 1000 brussel", "elsensesteenweg 21, 1000 brussel", "nieuwstraat 124, 1000 brussel"].sample,
       photo: Faker::Placeholdit.image,
