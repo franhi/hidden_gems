@@ -1,6 +1,16 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+
+    @posts_map = Post.where.not(latitude: nil, longitude: nil)
+
+    @markers = @posts_map.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude,
+      }
+    end
+
   end
 
   def show
