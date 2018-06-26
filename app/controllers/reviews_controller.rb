@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
       redirect_to user_post_path(@user, @path)
     else
       render :new
+    end
   end
 
   def destroy

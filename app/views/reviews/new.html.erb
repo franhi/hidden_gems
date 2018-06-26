@@ -1,2 +1,18 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="container">
+  <h1>Review for <%= post.name %></h1>
+
+  <div>
+    <%= simple_form_for [@user, @post, @review] do |f| %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div>
+        <%= f.input :description %>
+        <%= f.select :rating, [1,2,3,4,5] %>
+      </div>
+
+      <<div>
+        <%= f.button :submit, class "btn btn-primary" %>
+      </div>
+    <%= end %>
+  </div>
+</div>
