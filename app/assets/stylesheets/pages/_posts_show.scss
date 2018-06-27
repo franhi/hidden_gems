@@ -1,0 +1,42 @@
+#left-block{
+  margin-left: 50px;
+}
+
+.reviews-box{
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: lightgrey;
+  border-radius: 5px;
+
+}
+
+.reviews-content {
+  margin: 20px;
+}
+
+#category {
+  color: $orange;
+}
+
+#title {
+  font-size: 40px;
+}
+
+h3 {
+  font-family: $headers-font;
+  font-weight: bold;
+}
+
+h4 {
+  color: $gray;
+}
+
+p {
+  color: $gray;
+}
+
+.fa-star {
+  color: $orange;
+  font-size: 10px;
+  text-shadow: 2px 6px lightgrey;
+}

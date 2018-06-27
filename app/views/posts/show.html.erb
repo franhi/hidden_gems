@@ -1,39 +1,44 @@
-  <div> <%= @post.category %> </div>
-<h1> <%= @post.title %> <h1>
-  <p> <%= @post.city %> </p>
+ <%= render 'shared/banner_other' %>
+ <div class="col-xs-12 col-sm-6 col-lg-6" id="left-block">
+
+  <h3 id="category"> <%= @post.category.capitalize! %> </h3>
+  <h3 id="title"> <%= @post.title.capitalize! %> </h1>
+  <h4> <i class="fa fa-map-marker" aria-hidden="true"></i> <%= @post.city %> </h4>
+
   <p> <%= @post.description %> </p>
 
-<div> Reviews
-  <% if @average != "No ratings" || @average.nil? %>
-   <% @average.times do %>
-     <i class="fas fa-star"> </i>
-     <% end %>
-     (<%= @post.reviews.count %>)
-   <% end %>
+  <div class="reviews-box">
+    <div class="reviews-content">
+      <h4> Reviews
+      <% if @average != "No ratings" || @average.nil? %>
+      <% @average.times do %>
+      <i class="fas fa-star"> </i>
+      <% end %>
+      (<%= @post.reviews.count %>)
+      <% end %>
+    </h4>
 
 
-<div>
-  <% @post.reviews.each do |review| %>
-    <h4><%=review.description %></h4>
-    <p> <%= review.user.email %> <br>
-        <%= review.created_at.strftime("%d %B %Y") %>
-        &nbsp;
-        <% review.rating.times do %>
+      <div>
+        <% @post.reviews.each do |review| %>
+        <p> <%= review.user.email %> <br>
+          <%= review.created_at.strftime("%d %B %Y") %>
+          &nbsp;
+          <% review.rating.times do %>
           <i class="fas fa-star"> </i>
-        <% end %>
-        &nbsp;
-        <%= link_to like_post_review_path(review), method: :put do %>
-          <i class="fas fa-arrow-up"></i>
+          <% end %>
+          &nbsp;
+          <%= link_to like_post_review_path(@post, review), method: :put do %>
+          <i class="fas fa-thumbs-up"></i>
           <%= review.get_upvotes.size %>
+          <% end %>
+        </p>
+        <p><%=review.description %></p>
         <% end %>
-        <%= link_to dislike_post_review_path(review), method: :put do %>
-          <i class="fas fa-arrow-down"></i>
-          <%= review.get_downvotes.size %>
-        <% end %>
-    </p>
-  <% end %>
- </div>
-
+      </div>
+    </div>
+  </div>
 </div>
 
-
+<div class="col-xs-12 col-sm-6 col-lg-4">
+</div>
