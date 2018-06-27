@@ -24,4 +24,20 @@ class Post < ApplicationRecord
     [self.street, self.city, self.country].compact.join(', ')
   end
 
+
+  def average
+    ratings = 0
+    average = 0
+    self.reviews.each do |review|
+      if self.reviews.count == 0
+        average = "No ratings"
+      else
+        ratings += review.rating unless review.rating.nil?
+        average = ratings / self.reviews.count
+      end
+    end
+
+    return average
+  end
+
 end
