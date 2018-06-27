@@ -1,3 +1,8 @@
-<h1><%= @post.title %><h1>
+  <div> <%= @post.category %> </div>
+<h1> <%= @post.title %> <h1>
+  <p> <%= @post.address %> </p>
+  <p> <%= @post.description %> </p>
 
 <%= render 'reviews/review_list',post: @post %>
+
+

@@ -8,7 +8,9 @@
     <%= f.input :title %>
     Category: <%= f.select :category, Post::CATEGORIES %>
     <%= f.input :description %>
-    <%= f.input :address %>
+    <%= f.input :street %>
+    <%= f.input :city %>
+    <%= f.input :country %>
     Status: <%= f.select :status, Post::STATUS, value: 'permanent' %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
