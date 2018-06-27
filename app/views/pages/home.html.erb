@@ -1,16 +1,4 @@
 <%= render 'shared/banner_home' %>
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
   <% @posts.each do |post| %>
   <%= post.title %>
 <% end %>
-
-      <div>
-        <%= form_tag root_path, method: :get do  %>
-        <%= text_field_tag :query %>
-        <button type='submit'> search</button>
-        <% end %>
-      </div>
-
-link
