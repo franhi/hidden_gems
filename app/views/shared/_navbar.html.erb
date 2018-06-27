@@ -7,19 +7,21 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Home</a>
+    <%= link_to 'Home', root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to 'Gems', posts_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to 'Add a gem', new_post_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- a href="" class="navbar-wagon-item navbar-wagon-link">Home</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Gems</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Add a gem</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Your profile</a>
+    <a href="" class="navbar-wagon-item navbar-wagon-link">Your profile</a> -->
 
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li><%= link_to 'Your profile', user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %></li>
         </ul>
       </div>
     </div>
