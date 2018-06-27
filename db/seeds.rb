@@ -31,3 +31,14 @@ User.create!(email: "erland@erland.com", password: "lewagon", address: "antwerp"
       user: User.all.sample
       )
 end
+
+Post.all.each do |post|
+  rand(1..15).times  do
+    Review.create!(
+       post: post,
+      user: User.all.sample,
+      description: ["I think this the best gem I ever saw, I visited it and it really change my life", "WoW, Soooo beautifull", "I have to see this!", "it was so easy finding this, the map is so practical", "I've been there as well, but I do not believe it's the best. The one @place lux is better by my idea", "just amazing", "I will be forever gratefull you posted this!", "I'm in love with this place", "I have to agree on this one.", "Had the time of my life", "Amazing #Astrid Brian", "Breathtaking", "I've never heard of this place before, considering I live next door it felt like an epiphany", "This is nice", "f-ing nice", "That's where I proposed to my wife", "That's where I proposed to my ex-girlfriend", "Life improving!", "wowed me!", "best spot evvaaa", "so gooooood", "are you kidding me?", "Plz don't exaggerate, I thought this was a serious app", "proof that god loves us all", "Anybody would love this place", "mama mia", "almost as good as Le Wagon's demo day", "Isn't that where George lives?"].sample,
+      rating: rand(3..5),
+    )
+  end
+end
