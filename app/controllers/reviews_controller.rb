@@ -24,7 +24,12 @@ class ReviewsController < ApplicationController
 
   def upvote
     @review = Review.find(params[:id])
-    @review.upvote_by current_user
+    if !current_user.voted_for? @review
+        @review.liked_by current_user
+    else
+        @review.unliked_by current_user
+    end
+
     redirect_to post_path(@review.post)
   end
 
