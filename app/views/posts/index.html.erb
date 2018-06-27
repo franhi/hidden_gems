@@ -4,7 +4,7 @@
       <% @posts.each do |post| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="card" style="background-image: url(../images/mojito.jpg)">
-          <%= post.title %>
+          <%= link_to post.title, post_path(post) %>
         </div>
       </div>
       <% end %>
