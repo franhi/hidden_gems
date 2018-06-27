@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: (:will_save_change_to_street? || :will_save_change_to_city? || :will_save_change_to_country?)
+
 
   belongs_to :user
   has_many :reviews, dependent: :destroy
@@ -14,8 +15,29 @@ class Post < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_post,
-    against: [ :title, :category, :status, :address, :begin_date, :end_date ],
+    against: [ :title, :category, :status, :street, :city, :country, :begin_date, :end_date ],
     using: {
       tsearch: { prefix: true }
     }
+
+  def address
+    [self.street, self.city, self.country].compact.join(', ')
+  end
+
+
+  def average
+    ratings = 0
+    average = 0
+    self.reviews.each do |review|
+      if self.reviews.count == 0
+        average = "No ratings"
+      else
+        ratings += review.rating unless review.rating.nil?
+        average = ratings / self.reviews.count
+      end
+    end
+
+    return average
+  end
+
 end

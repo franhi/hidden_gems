@@ -3,7 +3,7 @@ ruby '2.4.4'
 
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'cloudinary'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.2'
 gem 'faker'
 gem 'devise'
 gem 'bootsnap', require: false
@@ -15,7 +15,7 @@ gem 'rails', '5.2.0'
 gem 'redis'
 gem "geocoder"
 gem 'pg_search'
-
+gem 'country_select'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'

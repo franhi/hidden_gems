@@ -1,7 +1,14 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+<div class="banner home" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= cl_image_path("benjamin-zanatta-545376-unsplash-c_crop.jpg") %>);">
   <div class="banner-content">
     <h1>Hidden Gems</h1>
     <p>Discover local</p>
-    <a class="btn btn-primary btn-lg">Start now</a>
+    <div>
+        <%= form_tag root_path, method: :get do  %>
+        <%= text_field_tag :query %>
+        <!-- <button type='submit'> search</button> -->
+        <% end %>
+        <br>
+    </div>
+    <a class="btn btn-primary btn-lg">Find a gem</a>
   </div>
 </div>
