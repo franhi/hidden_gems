@@ -236,7 +236,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap
   bootstrap-sass (~> 3.3)
-  carrierwave
+  carrierwave (~> 1.2)
   cloudinary
   devise
   faker

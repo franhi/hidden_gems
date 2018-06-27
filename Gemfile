@@ -3,7 +3,7 @@ ruby '2.4.4'
 
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'cloudinary'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.2'
 gem 'faker'
 gem 'devise'
 gem 'bootsnap', require: false
