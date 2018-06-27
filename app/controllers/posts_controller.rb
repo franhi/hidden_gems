@@ -15,10 +15,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
-
     @reviews = @post.reviews.sort {|x,y| y.votes_for.size <=> x.votes_for.size }
-
+    @average = @post.average
   end
 
   def new
@@ -58,7 +56,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :category, :address, :description, :photo, :status, :begin_date, :end_date)
+    params.require(:post).permit(:title, :category, :street, :city, :country, :description, :photo, :status, :begin_date, :end_date)
   end
 
 end
