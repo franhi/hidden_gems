@@ -3,7 +3,7 @@
 
   <h3 id="category"> <%= @post.category.capitalize! %> </h3>
   <h3 id="title"> <%= @post.title.capitalize! %> </h1>
-  <h4> <i class="fa fa-map-marker" aria-hidden="true"></i> <%= @post.city %> </h4>
+  <h4> <i class="fa fa-map-marker-alt"></i> <%= @post.city %> </h4>
 
   <p> <%= @post.description %> </p>
 
@@ -21,6 +21,7 @@
 
       <div>
         <% @post.reviews.each do |review| %>
+        <hr>
         <p> <%= review.user.email %> <br>
           <%= review.created_at.strftime("%d %B %Y") %>
           &nbsp;
