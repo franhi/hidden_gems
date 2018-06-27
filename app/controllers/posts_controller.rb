@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @reviews = @post.reviews.sort {|x,y| y.votes_for.size <=> x.votes_for.size }
     @average = @post.average
   end
 
