@@ -1,0 +1,14 @@
+<div class="container edit_user_form">
+  <%= simple_form_for(@user, method: :patch, url: users_update_path(@user)) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+      <%= f.input :username %>
+      <%= f.input :address %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+
+  <% end %>
+</div>
