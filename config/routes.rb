@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   resources :posts do
     resources :saves, only: [ :create, :destroy ]
     resources :been_theres, only: [ :create, :destroy ]
-    resources :reviews, only: [ :new, :create, :destroy] do
-      resources :likes, only: [ :create, :destroy ]
+    resources :reviews, only: [ :new, :create, :destroy, :show] do
+      member do
+        put "like", to: "reviews#upvote"
+        put "dislike", to: "reviews#downvote"
+      end
     end
   end
 end

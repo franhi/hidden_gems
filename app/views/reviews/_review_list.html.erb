@@ -1,0 +1,16 @@
+<% post.reviews.each do |review| %>
+  <h4><%=review.description %></h4>
+  <p><%= time_ago_in_words(review.created_at) %>
+    ago by <%= review.user.email %></p>
+
+  <%= link_to like_post_review_path(review), method: :put do %>
+    <i class="fas fa-arrow-up"></i>
+    <%= review.get_upvotes.size %>
+  <% end %>
+
+  <%= link_to dislike_post_review_path(review), method: :put do %>
+    <i class="fas fa-arrow-down"></i>
+    <%= review.get_downvotes.size %>
+  <% end %>
+
+<% end %>
