@@ -16,9 +16,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
 
-
     if @user.save!
-      redirect_to edit_user_path(@user)
+      redirect_to user_path(@user)
     else
       render :edit
     end
