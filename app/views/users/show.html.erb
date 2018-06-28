@@ -24,7 +24,6 @@
   <hr>
 
 
-
   <div class="user_interest">
     <div class="row" >
       <div class="col-xs-6">
@@ -81,3 +80,36 @@
 
 
 </div>
+
+
+
+
+<div class="container">
+    <h1 class="post-show">Your local gems</h1>
+    <div class="row">
+      <% current_user.favorites.each do |favorite| %>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
+
+              <div class="card-category-description-location">
+                <div class="card-category"><%= favorite.post.category.capitalize %></div>
+                <div class="card-description">
+                  <%= link_to favorite.post.title.capitalize, post_path(favorite) %>
+                </div>
+                <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i> <%= favorite.post.city %>
+                </div>
+              </div>
+
+              <i class="fas fa-heart saved"></i>
+              <div class="card-rating-status">
+                <div><i class="far fa-clock"></i></div>
+                <div><i class="fas fa-star"></i></div>
+              </div>
+            </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+

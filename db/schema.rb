@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_27_093946) do
+ActiveRecord::Schema.define(version: 2018_06_28_093905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2018_06_27_093946) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_been_theres_on_post_id"
     t.index ["user_id"], name: "index_been_theres_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -75,15 +84,6 @@ ActiveRecord::Schema.define(version: 2018_06_27_093946) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "saves", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_saves_on_post_id"
-    t.index ["user_id"], name: "index_saves_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -122,6 +122,8 @@ ActiveRecord::Schema.define(version: 2018_06_27_093946) do
 
   add_foreign_key "been_theres", "posts"
   add_foreign_key "been_theres", "users"
+  add_foreign_key "favorites", "posts"
+  add_foreign_key "favorites", "users"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
@@ -129,6 +131,4 @@ ActiveRecord::Schema.define(version: 2018_06_27_093946) do
   add_foreign_key "reports", "users"
   add_foreign_key "reviews", "posts"
   add_foreign_key "reviews", "users"
-  add_foreign_key "saves", "posts"
-  add_foreign_key "saves", "users"
 end

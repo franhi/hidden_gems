@@ -1,8 +1,8 @@
 #left-block{
   margin-left: 30px;
-}
 
-.reviews-box{
+
+.reviews-box {
   border-style: solid;
   border-width: 2px 2px 2px 2px;
   border-color: $gray;
@@ -18,23 +18,24 @@
 
 #category {
   color: $orange;
+  font-weight: lighter;
+  margin-bottom: -25px;
 }
 
 #title {
   font-size: 40px;
+  color: grey;
+  margin-bottom: -10px;
 }
 
-h3 {
-  font-family: $headers-font;
-  font-weight: bold;
+#left-block h4 {
+  color: grey;
+  margin-bottom: 40px;
 }
 
-h4 {
+#left-block p {
   color: $gray;
-}
-
-p {
-  color: $gray;
+  margin-bottom: 40px;
 }
 
 hr {
