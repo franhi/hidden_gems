@@ -251,12 +251,8 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap
   bootstrap-sass (~> 3.3)
-
   byebug
-  
-
   carrierwave (~> 1.2)
-
   cloudinary
   country_select
   devise

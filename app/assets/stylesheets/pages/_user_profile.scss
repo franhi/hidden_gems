@@ -15,3 +15,33 @@
 
   margin-top: 100px;
 }
+
+
+// scrolling horizontal cards
+
+.section {
+  background-color: #ccc;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.swipecard {
+  width: 10000px;
+  overflow-y: scroll;
+}
+
+.innercard {
+  position: relative;
+  width: 50px;
+  height: 200px;
+  white-space: nowrap;
+}
+
+
+.card--content {
+  background-color: #e74c3c;
+  min-width: 200px;
+  height: 180px;
+  margin: 5px;
+}
