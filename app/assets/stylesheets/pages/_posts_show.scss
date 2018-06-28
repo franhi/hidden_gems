@@ -1,11 +1,11 @@
 #left-block{
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .reviews-box{
   border-style: solid;
   border-width: 2px 2px 2px 2px;
-  border-color: lightgrey;
+  border-color: $gray;
   border-radius: 5px;
   border-bottom: solid;
   margin-bottom: 10px;
@@ -47,3 +47,15 @@ hr {
   color: $orange;
 }
 
+.hide-2:nth-child(n+3) {
+  display: none;
+}
+
+.show-avatar {
+  border-radius: 1px;
+  margin-left: 30px;
+  margin-top: 40px;
+  height: 300px;
+  width: 600px;
+  vertical-align: middle;
+}

@@ -11,7 +11,7 @@
     <%= f.input :street %>
     <%= f.input :city %>
     <%= f.input :country %>
-    Status: <%= f.select :status, Post::STATUS, value: 'permanent' %>
+    Status: <%= f.select :status, Post::STATUS, default: 'permanent' %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :begin_date, wrapper_html: { class: "hide-date" }  %>

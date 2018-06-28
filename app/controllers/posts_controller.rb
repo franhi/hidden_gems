@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    if !current_user.address.nil?
+        @posts = Post.all.near(current_user.address, 10 )
+        @posts_map = @posts
 
-    @posts_map = Post.where.not(latitude: nil, longitude: nil)
+    else
+      @posts = Post.where.not(latitude: nil, longitude: nil)
+      @posts_map = @posts
+    end
+
 
     @markers = @posts_map.map do |post|
       {
