@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'pages#home'
-  get 'users', to: 'pages#user_profile', as: :user
+  # get 'users', to: 'pages#user_profile', as: :user
   patch 'users/:id', to: 'users#update', as: 'users_update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    # @post = current_user.save
+  end
+
   def show
     @user = current_user
   end
