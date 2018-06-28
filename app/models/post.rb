@@ -40,4 +40,9 @@ class Post < ApplicationRecord
     return average
   end
 
+  def self.best_posts
+    averages = []
+    return self.all.sort {  |x, y|  y.average <=> x.average }
+  end
+
 end

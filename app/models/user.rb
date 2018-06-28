@@ -14,4 +14,13 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_voter
 
+  validate :found_address
+
+  private
+
+  def found_address
+    Geocoder.search(address).empty?
+    errors.add(:address, "can't be found")
+  end
 end
+
