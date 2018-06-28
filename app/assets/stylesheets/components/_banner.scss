@@ -34,6 +34,18 @@
   margin-top: -70px;
 }
 
+.banner.image {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -70px;
+}
+
 .banner-color {
   background-color: $turquoise;
   height: 70px;
