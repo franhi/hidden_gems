@@ -1,4 +1,4 @@
-#left-block{
+#left-block {
   margin-left: 50px;
 }
 
@@ -6,7 +6,7 @@
   border-style: solid;
   border-width: 2px 2px 2px 2px;
   border-color: lightgrey;
-  border-radius: 5px;
+  border-radius: 25px;
   border-bottom: solid;
   margin-bottom: 10px;
 
@@ -18,23 +18,24 @@
 
 #category {
   color: $orange;
+  font-weight: lighter;
+  margin-bottom: -25px;
 }
 
 #title {
   font-size: 40px;
+  color: grey;
+  margin-bottom: -10px;
 }
 
-h3 {
-  font-family: $headers-font;
-  font-weight: bold;
+#left-block h4 {
+  color: grey;
+  margin-bottom: 40px;
 }
 
-h4 {
+#left-block p {
   color: $gray;
-}
-
-p {
-  color: $gray;
+  margin-bottom: 40px;
 }
 
 hr {
