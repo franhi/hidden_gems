@@ -17,9 +17,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to root_path
+    redirect_to post_path(@post)
   end
 
   def upvote
