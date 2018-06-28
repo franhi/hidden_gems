@@ -1,21 +1,6 @@
-
-
-<%= simple_form_for(@post) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-
-    <%= f.input :title %>
-    Category: <%= f.select :category, Post::CATEGORIES %>
-    <%= f.input :description %>
-    <%= f.input :street %>
-    <%= f.input :city %>
-    <%= f.input :country %>
-    Status: <%= f.select :status, Post::STATUS, value: 'permanent' %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :begin_date, wrapper_html: { class: "hide-date" }  %>
-    <%= f.input :end_date, wrapper_html: {  class: "hide-date" } %>
-    <%= f.button :submit, class: "btn btn-primary" %>
-
-<% end %>
+<%= render 'shared/banner_color' %>
+<br>
+<div class="col-xs-6 col-xs-offset-3">
+  <h2>Add a gem</h2>
+  <%= render 'form', post: @post %>
+</div>
