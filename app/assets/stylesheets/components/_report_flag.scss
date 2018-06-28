@@ -1,0 +1,11 @@
+.flag-description {
+  visibility: hidden;
+}
+
+.flag-pop{
+
+}
+
+.flag-pop:hover .flag-description {
+  visibility: visible;
+}
