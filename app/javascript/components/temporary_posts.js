@@ -2,7 +2,7 @@
 
 function addTemporaryDates(){
 const link = document.querySelector('#post_status');
-
+ if(link){
 link.addEventListener('change', (event) => {
   if (link.value == "temporary")
   {
@@ -13,6 +13,7 @@ link.addEventListener('change', (event) => {
     unhide.forEach(el => el.classList.add('hide-date'));
   }
 })
+}
 }
 
 

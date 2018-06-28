@@ -4,43 +4,49 @@
 
   <h3 id="category"> <%= @post.category.capitalize! %> </h3>
   <h3 id="title"> <%= @post.title.capitalize! %> </h1>
-  <h4> <i class="fa fa-map-marker-alt"></i> <%= @post.city %> </h4>
+    <h4> <i class="fa fa-map-marker-alt"></i> <%= @post.city %> </h4>
 
-  <p> <%= @post.description %> </p>
+    <p> <%= @post.description %> </p>
 
-  <div class="reviews-box">
-    <div class="reviews-content">
-      <h4> Reviews
-      <% if @average != "No ratings" || @average.nil? %>
-      <% @average.times do %>
-      <i class="fas fa-star"> </i>
-      <% end %>
-      (<%= @post.reviews.count %>)
-      <% end %>
-    </h4>
-
-
-      <div>
-        <% @post.reviews.each do |review| %>
-        <hr>
-        <p> <%= review.user.email %> <br>
-          <%= review.created_at.strftime("%d %B %Y") %>
-          &nbsp;
-          <% review.rating.times do %>
+    <div class="reviews-box">
+      <div class="reviews-content">
+        <h4> Reviews
+          <% if @average != "No ratings" || @average.nil? %>
+          <% @average.times do %>
           <i class="fas fa-star"> </i>
           <% end %>
-          &nbsp;
-          <%= link_to like_post_review_path(@post, review), method: :put do %>
-          <i class="fas fa-thumbs-up"></i>
-          <%= review.get_upvotes.size %>
+          (<%= @post.reviews.count %>)
           <% end %>
-        </p>
-        <p><%=review.description %></p>
-        <% end %>
+          <button id="myBtn"> See all</button>
+        </h4>
+
+
+        <div  id="reviews-list">
+          <% @post.reviews.each do |review| %>
+          <div class="hide-2">
+            <hr>
+            <p> <%= review.user.email %> <br>
+              <%= review.created_at.strftime("%d %B %Y") %>
+              &nbsp;
+              <% review.rating.times do %>
+              <i class="fas fa-star"> </i>
+              <% end %>
+              &nbsp;
+              <%= link_to like_post_review_path(@post, review), method: :put do %>
+              <i class="fas fa-thumbs-up"></i>
+              <%= review.get_upvotes.size %>
+              <% end %>
+            </p>
+            <p><%=review.description %></p>
+          </div>
+          <% end %>
+        </div>
+        <hr>
+        <%= link_to "Review this gem", new_post_review_path(@post) %>
       </div>
     </div>
   </div>
-</div>
 
-<div class="col-xs-12 col-sm-6 col-lg-4">
-</div>
+  <div class="col-xs-12 col-sm-6 col-lg-5">
+    <%= @post.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@post.photo, class: "show-avatar") %>
+  </div>
