@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :been_theres, dependent: :destroy
-  has_many :saves, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :reports, dependent: :destroy
 
   CATEGORIES = ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"]
