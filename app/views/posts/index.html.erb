@@ -18,7 +18,16 @@
                 </div>
               </div>
 
-              <i class="fas fa-heart saved"></i>
+              <% if post.favorites.blank? || post.favorites.nil? %>
+                <%# link_to post_favorites_path(post), method: :post do %>
+                  <i class="far fa-heart favorite"></i>
+                <%# end %>
+              <% else %>
+                <%# link_to post_favorites_path(post, @favorite), method: :delete do %>
+                  <i class="fas fa-heart favorite"></i>
+                <%# end %>
+              <% end %>
+
               <div class="card-rating-status">
                 <div><i class="far fa-clock"></i></div>
                 <div><i class="fas fa-star"></i></div>

@@ -1,5 +1,7 @@
  <%= render 'shared/banner_other' %>
  <br>
+   <i class="fas fa-thumbtack"></i>
+
  <div class="col-xs-12 col-sm-6 col-lg-6" id="left-block">
 
   <h3 id="category"> <%= @post.category.capitalize! %> </h3>
@@ -50,3 +52,4 @@
   <div class="col-xs-12 col-sm-6 col-lg-5">
     <%= @post.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@post.photo, class: "show-avatar") %>
   </div>
+

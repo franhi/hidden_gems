@@ -15,12 +15,14 @@
     opacity: 1.0;
   }
 }
-.saved {
+.favorite {
   position: absolute;
   right: -15px;
   top: 10px;
   width: 40px;
   font-size: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .card-category-description-location {
