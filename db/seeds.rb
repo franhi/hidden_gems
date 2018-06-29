@@ -11,18 +11,18 @@ require 'faker'
  # Post.delete_all
  # User.destroy_all
 
-User.create!(email: "irma@irma.com", password: "lewagon", address: "brussels")
-User.create!(email: "francois@francois.com", password: "lewagon", address: "brussels")
-User.create!(email: "john@john.com", password: "lewagon", address: "brussels")
-User.create!(email: "erland@erland.com", password: "lewagon", address: "antwerp")
+User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 
-10.times  do
+10.times do
   status =  ["temporary", "permanent"].sample
 
       Post.create!(
       description: Faker::Hipster.paragraph,
       category: ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"].sample,
-      title: ["Buffalo's in brussels", "exclusive rooftop-party", "Le Wagon demo day!", "crazy dance-off", "haunted castle", "Rue D'Isabelle", "tropismes", "la pasionaria", "king albert's jacket", "urban rooms", "druum", "parvis de saint-gilles", "marolles", "matongé", "le 203", "PeÏ et Meï", "Bcentral's coffee", "The mysterious teachers of Le Wagon", "Who's Ana", "het Mim", "Play-Label"].sample,
+      title: ["Buffalo's in brussels", "Exclusive rooftop party", "Le Wagon demo day!", "crazy dance off", "haunted castle", "Rue D'Isabelle", "tropismes", "la pasionaria", "king albert's jacket", "urban rooms", "Druum", "Parvis de saint-gilles", "Marolles", "matongé", "le 203", "PeÏ et Meï", "Bcentral's coffee", "The mysterious teachers of Le Wagon", "Het Mim", "Play Label"].sample,
       status: status,
       street: ["66 rue des Minimes", "Cafe des Minimes", "Square du Solbosch", "ULB", "Rue Lesbroussart"].sample,
       city: "Brussels",

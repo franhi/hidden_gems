@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   has_many :reports, dependent: :destroy
 
   CATEGORIES = ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"]
-  STATUS = ["temporary", "permanent"]
+  STATUS = ["permanent", "temporary"]
 
   include PgSearch
   pg_search_scope :search_post,

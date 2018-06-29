@@ -14,7 +14,7 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_voter
 
-  validate :found_address
+  # validate :found_address
 
   private
 

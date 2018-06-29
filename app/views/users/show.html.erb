@@ -6,7 +6,7 @@
 
     <div class="profile_pict col-xs-12 col-sm-6 col-lg-5">
       <!-- <img url="https://yt3.ggpht.com/a-/ACSszfGxjQ2zoNjyn0zAtB4SZGHo0eBjQ_tbSO4Xaw=s900-mo-c-c0xffffffff-rj-k-no" class="img-rounded" alt="Cinque Terre"> -->
-      <%= @user.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@user.photo, class: "show-avatar") %>
+      <%= @user.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "user-avatar") : cl_image_tag(@user.photo, class: "user-avatar") %>
       <%#= @user.photo.url.nil? ? cl_image_tag("stanislav-rabunski-642169-unsplash.jpg") : cl_image_tag(@user.photo)%>
     </div>
 
@@ -22,7 +22,6 @@
 
   </div>
   <hr>
-
 
   <div class="user_interest">
     <div class="row" >
@@ -50,7 +49,7 @@
         <% if current_user.favorites.exists? %>
         <% current_user.favorites.each do |favorite| %>
 
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
+        <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
 
           <div class="card-category-description-location">
             <div class="card-category"><%= favorite.post.category.capitalize %></div>
