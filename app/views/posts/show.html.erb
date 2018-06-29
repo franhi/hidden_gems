@@ -1,9 +1,17 @@
  <%= render 'shared/banner_other' %>
  <br>
+
  <div class="col-xs-12 col-sm-6 col-lg-6" id="left-block">
 
+  <div>
+   <%= link_to new_post_report_path(@post) do %>
+   <i class="fas fa-flag"></i>
+   <p>report this post</p>
+   <% end %>
+  </div>
+
   <h3 id="category"> <%= @post.category.capitalize! %> </h3>
-  <h3 id="title"> <%= @post.title.capitalize! %> </h1>
+  <h1 id="title"> <%= @post.title.capitalize! %> </h1>
     <h4> <i class="fa fa-map-marker-alt"></i> <%= @post.city %> </h4>
 
     <p> <%= @post.description %> </p>
