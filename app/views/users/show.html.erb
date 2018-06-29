@@ -4,13 +4,14 @@
 
   <div class="about_user row">
 
-    <div class="profile_pict col-xs-6">
-      <img url="https://yt3.ggpht.com/a-/ACSszfGxjQ2zoNjyn0zAtB4SZGHo0eBjQ_tbSO4Xaw=s900-mo-c-c0xffffffff-rj-k-no" class="img-rounded" alt="Cinque Terre">
+    <div class="profile_pict col-xs-12 col-sm-6 col-lg-5">
+      <!-- <img url="https://yt3.ggpht.com/a-/ACSszfGxjQ2zoNjyn0zAtB4SZGHo0eBjQ_tbSO4Xaw=s900-mo-c-c0xffffffff-rj-k-no" class="img-rounded" alt="Cinque Terre"> -->
+      <%= @user.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@user.photo, class: "show-avatar") %>
       <%#= @user.photo.url.nil? ? cl_image_tag("stanislav-rabunski-642169-unsplash.jpg") : cl_image_tag(@user.photo)%>
     </div>
 
 
-    <div class="profile_information col-xs-6">
+    <div class="profile_information col-xs-12 col-sm-6 col-lg-5">
       <h3> About you </h3>
       <p>Username: Missing so far <%= @username %></p>
       <p>Email: <%= @user.email %></p>
