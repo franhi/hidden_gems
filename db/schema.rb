@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2018_07_02_095241) do
 
   create_table "posts", force: :cascade do |t|
     t.text "description"
-    t.string "category"
     t.string "title"
     t.string "status"
     t.string "photo"
