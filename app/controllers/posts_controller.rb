@@ -3,10 +3,16 @@ class PostsController < ApplicationController
     if !current_user.address.nil?
         @posts = Post.all.near(current_user.address, 10 )
         @posts_map = @posts
+        @posts.each do |post|
+          @favorite = Favorite.new(post: post, user: current_user)
+        end
 
     else
       @posts = Post.where.not(latitude: nil, longitude: nil)
       @posts_map = @posts
+      @posts.each do |post|
+        @favorite = Favorite.new(post: post, user: current_user)
+      end
     end
 
 
@@ -16,7 +22,6 @@ class PostsController < ApplicationController
         lng: post.longitude,
       }
     end
-
   end
 
   def show
