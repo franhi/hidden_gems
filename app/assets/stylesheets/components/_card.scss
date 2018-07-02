@@ -11,13 +11,13 @@
   font-family: "Roboto";
   font-size: 14px;
   opacity: 1.0;
-  margin-bottom: 100px;
   &:hover {
     opacity: 0.8;
   }
 }
 .card.user {
   min-width: 30%;
+  margin: 20px;
 }
 
 .saved {
