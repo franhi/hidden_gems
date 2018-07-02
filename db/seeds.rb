@@ -7,64 +7,48 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
- # Review.destroy_all
- # Post.delete_all
- # User.destroy_all
+  Review.destroy_all
+  Post.delete_all
+  User.destroy_all
 
+puts "Creating users"
 User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 
-10.times do
-  status =  ["temporary", "permanent"].sample
+# 10.times do
+#   status =  ["temporary", "permanent"].sample
 
-      Post.create!(
-      description: Faker::Hipster.paragraph,
-      category: ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"].sample,
-      title: ["Buffalo's in brussels", "Exclusive rooftop party", "Le Wagon demo day!", "crazy dance off", "haunted castle", "Rue D'Isabelle", "tropismes", "la pasionaria", "king albert's jacket", "urban rooms", "Druum", "Parvis de saint-gilles", "Marolles", "matongé", "le 203", "PeÏ et Meï", "Bcentral's coffee", "The mysterious teachers of Le Wagon", "Het Mim", "Play Label"].sample,
-      status: status,
-      street: ["66 rue des Minimes", "Cafe des Minimes", "Square du Solbosch", "ULB", "Rue Lesbroussart"].sample,
-      city: "Brussels",
-      country: "Belgium",
-      photo: Faker::Placeholdit.image,
-      begin_date: (Faker::Date.between(Date.today, 5.days.from_now) if status == "temporary"),
-      end_date: (Faker::Date.between(5.days.from_now, 10.days.from_now) if status == "temporary"),
-      user: User.all.sample
-      )
-end
+#       Post.create!(
+#       description: Faker::Hipster.paragraph,
+#       category: ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"].sample,
+#       title: ["Buffalo's in brussels", "Exclusive rooftop party", "Le Wagon demo day!", "crazy dance off", "haunted castle", "Rue D'Isabelle", "tropismes", "la pasionaria", "king albert's jacket", "urban rooms", "Druum", "Parvis de saint-gilles", "Marolles", "matongé", "le 203", "PeÏ et Meï", "Bcentral's coffee", "The mysterious teachers of Le Wagon", "Het Mim", "Play Label"].sample,
+#       status: status,
+#       street: ["66 rue des Minimes", "Cafe des Minimes", "Square du Solbosch", "ULB", "Rue Lesbroussart"].sample,
+#       city: "Brussels",
+#       country: "Belgium",
+#       photo: Faker::Placeholdit.image,
+#       begin_date: (Faker::Date.between(Date.today, 5.days.from_now) if status == "temporary"),
+#       end_date: (Faker::Date.between(5.days.from_now, 10.days.from_now) if status == "temporary"),
+#       user: User.all.sample
+#       )
+# end
 
-Post.all.each do |post|
-  rand(1..15).times  do
-    Review.create!(
-       post: post,
-      user: User.all.sample,
-      description: ["I think this the best gem I ever saw, I visited it and it really change my life", "WoW, Soooo beautifull", "I have to see this!", "it was so easy finding this, the map is so practical", "I've been there as well, but I do not believe it's the best. The one @place lux is better by my idea", "just amazing", "I will be forever gratefull you posted this!", "I'm in love with this place", "I have to agree on this one.", "Had the time of my life", "Amazing #Astrid Brian", "Breathtaking", "I've never heard of this place before, considering I live next door it felt like an epiphany", "This is nice", "f-ing nice", "That's where I proposed to my wife", "That's where I proposed to my ex-girlfriend", "Life improving!", "wowed me!", "best spot evvaaa", "so gooooood", "are you kidding me?", "Plz don't exaggerate, I thought this was a serious app", "proof that god loves us all", "Anybody would love this place", "mama mia", "almost as good as Le Wagon's demo day", "Isn't that where George lives?"].sample,
-      rating: rand(3..5),
-    )
-  end
-end
+# Post.all.each do |post|
+#   rand(1..15).times  do
+#     Review.create!(
+#        post: post,
+#       user: User.all.sample,
+#       description: ["I think this the best gem I ever saw, I visited it and it really change my life", "WoW, Soooo beautifull", "I have to see this!", "it was so easy finding this, the map is so practical", "I've been there as well, but I do not believe it's the best. The one @place lux is better by my idea", "just amazing", "I will be forever gratefull you posted this!", "I'm in love with this place", "I have to agree on this one.", "Had the time of my life", "Amazing #Astrid Brian", "Breathtaking", "I've never heard of this place before, considering I live next door it felt like an epiphany", "This is nice", "f-ing nice", "That's where I proposed to my wife", "That's where I proposed to my ex-girlfriend", "Life improving!", "wowed me!", "best spot evvaaa", "so gooooood", "are you kidding me?", "Plz don't exaggerate, I thought this was a serious app", "proof that god loves us all", "Anybody would love this place", "mama mia", "almost as good as Le Wagon's demo day", "Isn't that where George lives?"].sample,
+#       rating: rand(3..5),
+#     )
+#   end
+# end
 
-# update user to User.all.sample before deploying to Heroku!!!!
-
-Favorite.create!(user_id: 1, post_id: 5)
-Favorite.create!(user_id: 1, post_id: 6)
-Favorite.create!(user_id: 1, post_id: 8)
-Favorite.create!(user_id: 1, post_id: 10)
-Favorite.create!(user_id: 2, post_id: 5)
-Favorite.create!(user_id: 2, post_id: 6)
-Favorite.create!(user_id: 2, post_id: 8)
-Favorite.create!(user_id: 2, post_id: 10)
-Favorite.create!(user_id: 3, post_id: 5)
-Favorite.create!(user_id: 3, post_id: 6)
-Favorite.create!(user_id: 3, post_id: 8)
-Favorite.create!(user_id: 3, post_id: 10)
-Favorite.create!(user_id: 4, post_id: 5)
-Favorite.create!(user_id: 4, post_id: 6)
-Favorite.create!(user_id: 4, post_id: 8)
-Favorite.create!(user_id: 4, post_id: 10)
 
 # tag seed creation to add on post and add on user
+puts "Creating posts"
 
 post_list = [
   ["Lazy Jack's", "Referring to a part of a boat, Hidden in the port of Antwerp. The sweetspot for hipsters.", "permanent", "kattendijkdok-Oostkaai, 22", "Antwerp", "Belgium", "https://corporate.apbc.be/upload/1/pers/453_1490.jpg", "", ""],
@@ -90,11 +74,43 @@ post_list = [
   ["PLAY-LABEL Rooftop bar", "The rooftop bar is located between two of the most beautiful areas in Brussels, The Sablon and the Marolles, where you can find sets from independent artists playing in B2B.", "temporary", "Boulevard de l’Empereur, 36", "Brussels", "Belgium", "https://images.bruzz.be/import/article_media/images/playlabelrooftop.jpg?auto=format&crop=edges%252C%2520entropy&fit=crop&ixlib=php-1.1.0&q=95&w=640&s=c444317279b6070930b84fe614e1de18", "May, 2018", "September, 2018"],
 ]
 
-post_list.each do |title, description, status, street, city, country, photo, begin_date, end_date|
-  Post.create( title: title, description: description, status: status, street: street, city: city, country: country, photo: photo, begin_date: begin_date, end_date: end_date )
+post_list.each do |hey|
+  Post.create(user_id: (1..User.all.count), title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8] )
+end
+
+Post.all.each do |post|
+  rand(1..15).times  do
+    Review.create!(
+       post: post,
+      user: User.all.sample,
+      description: ["I think this the best gem I ever saw, I visited it and it really change my life", "WoW, Soooo beautifull", "I have to see this!", "it was so easy finding this, the map is so practical", "I've been there as well, but I do not believe it's the best. The one @place lux is better by my idea", "just amazing", "I will be forever gratefull you posted this!", "I'm in love with this place", "I have to agree on this one.", "Had the time of my life", "Amazing #Astrid Brian", "Breathtaking", "I've never heard of this place before, considering I live next door it felt like an epiphany", "This is nice", "f-ing nice", "That's where I proposed to my wife", "That's where I proposed to my ex-girlfriend", "Life improving!", "wowed me!", "best spot evvaaa", "so gooooood", "are you kidding me?", "Plz don't exaggerate, I thought this was a serious app", "proof that god loves us all", "Anybody would love this place", "mama mia", "almost as good as Le Wagon's demo day", "Isn't that where George lives?"].sample,
+      rating: rand(3..5),
+    )
+  end
 end
 # specific tag per post
 
+# update user to User.all.sample before deploying to Heroku!!!!
+puts "Creating favorites"
+Favorite.create!(user_id: 1, post_id: 5)
+Favorite.create!(user_id: 1, post_id: 6)
+Favorite.create!(user_id: 1, post_id: 8)
+Favorite.create!(user_id: 1, post_id: 10)
+Favorite.create!(user_id: 2, post_id: 5)
+Favorite.create!(user_id: 2, post_id: 6)
+Favorite.create!(user_id: 2, post_id: 8)
+Favorite.create!(user_id: 2, post_id: 10)
+Favorite.create!(user_id: 3, post_id: 5)
+Favorite.create!(user_id: 3, post_id: 6)
+Favorite.create!(user_id: 3, post_id: 8)
+Favorite.create!(user_id: 3, post_id: 10)
+Favorite.create!(user_id: 4, post_id: 5)
+Favorite.create!(user_id: 4, post_id: 6)
+Favorite.create!(user_id: 4, post_id: 8)
+Favorite.create!(user_id: 4, post_id: 10)
+
+
+# tag list for post
 tag_list = [
   ["fun", "culture", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks", "yummy-yummy", "with-a-view", "sunday-chilling", "TGIF", "love-books", "stays forever", "starchitects", "monk beers", "crafty", "gemmy-gem!"]
 ]
