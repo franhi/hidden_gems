@@ -25,7 +25,7 @@
 .banner.home {
   color: white;
   text-align: center;
-  height: 100vh;
+  height:70vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -55,11 +55,28 @@
 .banner.other {
   color: white;
   text-align: center;
-  height: 60vh;
+  height: 70vh;
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: -70px;
   background-position: center;
+}
+
+.banner-color.home {
+  padding-top: 25px;
+  height: 200px;
+  background-color: $turquoise;
+  display: flex;
+  justify-content: center;
+
+  i {
+    font-size: 50px;
+  }
+}
+
+.intro-text {
+  width: 30%;
+  color: white;
 }

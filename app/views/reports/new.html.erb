@@ -1,2 +1,16 @@
-<h1>Reports#new</h1>
-<p>Find me in app/views/reports/new.html.erb</p>
+<%= render 'shared/banner_color' %>
+<div class="container">
+  <h1> Report for <%= @post.title %></h1>
+  <div>
+    <%= simple_form_for [@user, @post, @report] do |f| %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div>
+      <%= f.input :description %>
+    </div>
+    <p></p>
+    <div>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

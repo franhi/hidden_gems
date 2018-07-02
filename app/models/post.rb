@@ -10,12 +10,14 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :reports, dependent: :destroy
 
-  CATEGORIES = ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"]
-  STATUS = ["temporary", "permanent"]
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
+
+  STATUS = ["permanent", "temporary"]
 
   include PgSearch
   pg_search_scope :search_post,
-    against: [ :title, :category, :status, :street, :city, :country, :begin_date, :end_date ],
+    against: [ :title, :status, :street, :city, :country, :begin_date, :end_date ],
     using: {
       tsearch: { prefix: true }
     }
@@ -38,6 +40,11 @@ class Post < ApplicationRecord
     end
 
     return average
+  end
+
+  def self.best_posts
+    averages = []
+    return self.all.sort {  |x, y|  y.average <=> x.average }
   end
 
 end

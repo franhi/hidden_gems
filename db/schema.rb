@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_093905) do
+ActiveRecord::Schema.define(version: 2018_07_02_095241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "been_theres", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_been_theres_on_post_id"
-    t.index ["user_id"], name: "index_been_theres_on_user_id"
-  end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
@@ -40,6 +31,15 @@ ActiveRecord::Schema.define(version: 2018_06_28_093905) do
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_likes_on_review_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "posts_id"
+    t.bigint "tags_id"
+    t.index ["posts_id"], name: "index_post_tags_on_posts_id"
+    t.index ["tags_id"], name: "index_post_tags_on_tags_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -84,6 +84,21 @@ ActiveRecord::Schema.define(version: 2018_06_28_093905) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.bigint "tags_id"
+    t.index ["tags_id"], name: "index_user_tags_on_tags_id"
+    t.index ["users_id"], name: "index_user_tags_on_users_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -120,8 +135,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_093905) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-  add_foreign_key "been_theres", "posts"
-  add_foreign_key "been_theres", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "reviews"

@@ -16,32 +16,31 @@
   margin-top: 100px;
 }
 
+.card_block {
 
-// scrolling horizontal cards
-
-.section {
-  background-color: #ccc;
-  width: 100%;
-  overflow: hidden;
-  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 310px;
+  overflow: scroll;
 }
 
-.swipecard {
-  width: 10000px;
-  overflow-y: scroll;
+.profile_pict {
+  width: 20%;
+
 }
 
-.innercard {
-  position: relative;
-  width: 50px;
-  height: 200px;
-  white-space: nowrap;
+.about_user.row {
 }
 
+.user-avatar {
+  width: 100px;
+  border-radius: 50%;
+  vertical-align: none;
+  margin-top: 25px;
 
-.card--content {
-  background-color: #e74c3c;
-  min-width: 200px;
-  height: 180px;
-  margin: 5px;
 }
+.profile_information {
+
+}
+
