@@ -7,7 +7,7 @@
       <% @posts.each do |post| %>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 
-              <% if post.favorites.blank? || post.favorites.nil? %>
+              <% if post.favorites.where(user_id: current_user)[0].blank? || post.favorites.where(user_id: current_user)[0].nil?%>
                 <%= link_to post_favorites_path(post), method: :post do %>
                   <i class="far fa-heart saved"></i>
                 <% end %>
