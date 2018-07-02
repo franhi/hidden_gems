@@ -10,12 +10,14 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :reports, dependent: :destroy
 
-  CATEGORIES = ["general", "entertainment", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks"]
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
+
   STATUS = ["permanent", "temporary"]
 
   include PgSearch
   pg_search_scope :search_post,
-    against: [ :title, :category, :status, :street, :city, :country, :begin_date, :end_date ],
+    against: [ :title, :status, :street, :city, :country, :begin_date, :end_date ],
     using: {
       tsearch: { prefix: true }
     }
