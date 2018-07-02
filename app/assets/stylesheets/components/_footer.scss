@@ -2,10 +2,13 @@
   height: 70px;
   width: 100%;
   background-color: $turquoise;
-  text-align: center;
-  vertical-align: middle;
+  // text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 p {
   color: white;
+  font-size: 16px;
   }
 }
 
