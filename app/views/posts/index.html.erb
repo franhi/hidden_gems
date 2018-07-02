@@ -8,13 +8,14 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 
               <% if post.favorites.blank? || post.favorites.nil? %>
-                <% link_to post_favorites_path(post), method: :post do %>
+                <%= link_to post_favorites_path(post), method: :post do %>
                   <i class="far fa-heart saved"></i>
-                <%# end %>
+                <% end %>
               <% else %>
-                <% link_to post_favorites_path(post, @favorite), method: :delete do %>
+                <% hey = post.favorites.where(user_id: current_user)[0].id %>
+                <%= link_to post_favorite_path(post, hey), method: :delete do %>
                   <i class="fas fa-heart saved"></i>
-                <%# end %>
+                <% end %>
               <% end %>
 
         <!-- <i class="fas fa-heart saved"></i> -->

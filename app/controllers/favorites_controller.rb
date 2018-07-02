@@ -1,15 +1,15 @@
 class FavoritesController < ApplicationController
   def create
-    @favorite = Favorite.new(favorite_params)
     @post = Post.find(params[:post_id])
-    @favorite.user_id = current_user.id
-    @favorite.post = @post
+    @favorite = Favorite.new(post: @post, user: current_user)
     @favorite.save!
+    redirect_to posts_path
   end
 
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
+    redirect_to posts_path
   end
 
   private
