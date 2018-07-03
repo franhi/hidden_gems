@@ -49,7 +49,12 @@
               </div>
 
               <div class="card-rating-status">
-                <div><i class="far fa-clock"></i></div>
+                <div>
+                  <% if post.status == "temporary" %>
+                    <i class="far fa-clock"></i>
+                  <% end %>
+                </div>
+
                   <div>
                   <% if post.average != "No ratings" %>
                     <% post.average.times do %>

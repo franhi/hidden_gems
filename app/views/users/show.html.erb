@@ -49,7 +49,12 @@
         <% if current_user.favorites.exists? %>
         <% current_user.favorites.each do |favorite| %>
 
+
         <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
+
+          <%= link_to post_favorite_path(favorite.post, favorite), method: :delete do %>
+            <i class="fas fa-heart saved"></i>
+          <% end %>
 
           <div class="card-category-description-location">
             <div class="card-category"><%= favorite.post.category.capitalize %></div>
@@ -61,11 +66,20 @@
             </div>
           </div>
 
-          <i class="fas fa-heart saved"></i>
           <div class="card-rating-status">
-            <div><i class="far fa-clock"></i></div>
-            <div><i class="fas fa-star"></i></div>
+            <div>
+              <% if favorite.post.status == "temporary" %>
+                <i class="far fa-clock"></i>
+              <% end %>
+            </div>
+
+              <% if favorite.post.average != "No ratings" %>
+                <% favorite.post.average.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              <% end %>
           </div>
+
         </div>
         <% end %>
         <% else %>
