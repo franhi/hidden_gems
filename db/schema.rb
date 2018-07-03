@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 2018_07_02_095241) do
   create_table "post_tags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "posts_id"
-    t.bigint "tags_id"
-    t.index ["posts_id"], name: "index_post_tags_on_posts_id"
-    t.index ["tags_id"], name: "index_post_tags_on_tags_id"
+    t.bigint "post_id"
+    t.bigint "tag_id"
+    t.index ["post_id"], name: "index_post_tags_on_post_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -93,10 +93,10 @@ ActiveRecord::Schema.define(version: 2018_07_02_095241) do
   create_table "user_tags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.bigint "tags_id"
-    t.index ["tags_id"], name: "index_user_tags_on_tags_id"
-    t.index ["users_id"], name: "index_user_tags_on_users_id"
+    t.bigint "user_id"
+    t.bigint "tag_id"
+    t.index ["tag_id"], name: "index_user_tags_on_tag_id"
+    t.index ["user_id"], name: "index_user_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

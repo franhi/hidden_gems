@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   geocoded_by :address
   after_validation :geocode, if: (:will_save_change_to_street? || :will_save_change_to_city? || :will_save_change_to_country?)
@@ -9,8 +9,8 @@ class Post < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :reports, dependent: :destroy
-
-  has_many :tags
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
 
 
   STATUS = ["permanent", "temporary"]
