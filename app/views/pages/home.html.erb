@@ -28,11 +28,25 @@
       <% end %>
     </div>
   </div>
-<% end %>
 
-  <% @results = Geocoder.reverse_geocode(latitude, longitude) %>
-  <% @coordinates = results.coordinates %>
-  <% @close_posts = Post.all.near(@coordinates, 10) %>
-  <% @close_posts.each do |post| %>
-    <%= post.title %>
-  <% end %>
+<script>
+function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var location = [];
+    location.push(latitude, longitude);
+    fetch(`/?latitude=${latitude}&longitude=${longitude}`, headers: {"Content-Type": "application/json"})
+    .then(response => response.json())
+    .then((data) => {
+
+      console.log(data);
+    // do something with the json
+  });
+    console.log(location);
+    return location
+}
+
+window.onload = function() { navigator.geolocation.getCurrentPosition(showPosition)};
+</script>
+
+
