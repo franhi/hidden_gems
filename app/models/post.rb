@@ -1,10 +1,11 @@
 class Post < ApplicationRecord
-  mount_uploader :photo, PhotoUploader
+  # mount_uploader :photo, PhotoUploader
+
   geocoded_by :address
   after_validation :geocode, if: (:will_save_change_to_street? || :will_save_change_to_city? || :will_save_change_to_country?)
 
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :reports, dependent: :destroy
