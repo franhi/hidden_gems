@@ -16,7 +16,7 @@ class PagesController < ApplicationController
       @posts = Post.all.near(@coordinates, 1)
       raise
    else
-    # @user_location = params[:location]
+    #   @user_location = params[:location]
     # @posts = Post.all.near(@user_location, 10 )
       @posts = Post.all
     end
