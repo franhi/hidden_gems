@@ -11,10 +11,18 @@
   </div>
 
   <div class="post-info">
-    <h3 id="category"> <%= @post.category.capitalize! %> </h3>
-    <h1 id="title"> <%= @post.title.capitalize! %> </h1>
+    <h3 id="category"> <%= @post.category %> </h3>
+    <h1 id="title"> <%= @post.title %> </h1>
 
     <h4> <i class="fa fa-map-marker-alt"></i> <%= @post.city %> </h4>
+  </div>
+
+  <!-- tags -->
+
+  <div>
+    <% @post.tags.each do |tag| %>
+       <div class="btn_interests btn"><%= tag.name.capitalize %></div>
+      <% end %>
   </div>
 
     <p> <%= @post.description %> </p>
@@ -59,6 +67,6 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-lg-5">
-    <%= @post.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@post.photo, class: "show-avatar") %>
+    <%= @post.photo.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@post.photo, class: "show-avatar") %>
   </div>
 

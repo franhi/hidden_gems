@@ -28,15 +28,20 @@
         <h4> Interests </h4>
       </div>
       <div class="col-xs-6 add-interest">
-        <h4> Add interests <i class="fas fa-plus-circle"></i></h4>
+        <%= link_to new_user_user_tag_path(@user) do %>
+          <h4>Add interests <i class="fas fa-plus-circle"></i></h4>
+        <% end %>
+
+        </h4>
 
       </div>
     </div>
 
     <div>
-      <div class="btn_interests btn">Eat & Drinks</div>
-      <div class="btn_interests btn">Sports</div>
-      <div class="btn_interests btn">Music</div>
+
+      <% current_user.tags.each do |tag| %>
+       <div class="btn_interests btn"><%= tag.name.capitalize %></div>
+      <% end %>
     </div>
   </div>
   <hr>
