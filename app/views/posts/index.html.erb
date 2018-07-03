@@ -21,9 +21,9 @@
         <!-- <i class="fas fa-heart saved"></i> -->
 
           <%= link_to post_path(post) do %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
               <div class="card-category-description-location">
-                <div class="card-category"><%= post.category.capitalize %></div>
+                <div class="card-category"><%#= post.category.capitalize %></div>
                 <div class="card-description">
                   <%= post.title.capitalize%>
                 </div>
