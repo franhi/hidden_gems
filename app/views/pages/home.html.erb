@@ -24,6 +24,18 @@
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+          <% if post.favorites.where(user_id: current_user)[0].blank? || post.favorites.where(user_id: current_user)[0].nil?%>
+            <%= link_to post_favorites_path(post), method: :post do %>
+              <i class="far fa-heart saved"></i>
+            <% end %>
+          <% else %>
+            <% hey = post.favorites.where(user_id: current_user)[0].id %>
+            <%= link_to post_favorite_path(post, hey), method: :delete do %>
+              <i class="fas fa-heart saved"></i>
+            <% end %>
+          <% end %>
+
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
 
               <div class="card-category-description-location">
@@ -36,9 +48,13 @@
                 </div>
               </div>
 
-              <i class="fas fa-heart saved"></i>
               <div class="card-rating-status">
-                <div><i class="far fa-clock"></i></div>
+                <div>
+                  <% if post.status == "temporary" %>
+                    <i class="far fa-clock"></i>
+                  <% end %>
+                </div>
+
                   <div>
                   <% if post.average != "No ratings" %>
                     <% post.average.times do %>

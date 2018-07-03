@@ -6,16 +6,15 @@
 
     <div class="profile_pict col-xs-12 col-sm-6 col-lg-5">
       <!-- <img url="https://yt3.ggpht.com/a-/ACSszfGxjQ2zoNjyn0zAtB4SZGHo0eBjQ_tbSO4Xaw=s900-mo-c-c0xffffffff-rj-k-no" class="img-rounded" alt="Cinque Terre"> -->
-      <%= @user.photo.url.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "user-avatar") : cl_image_tag(@user.photo, class: "user-avatar") %>
+      <%= @user.photo.url.nil? ? image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "user-avatar") : cl_image_tag(@user.photo, class: "user-avatar") %>
       <%#= @user.photo.url.nil? ? cl_image_tag("stanislav-rabunski-642169-unsplash.jpg") : cl_image_tag(@user.photo)%>
     </div>
 
 
     <div class="profile_information col-xs-12 col-sm-6 col-lg-5">
-      <h3> About you </h3>
+      <h3> Your profile </h3>
       <p>Username: Missing so far <%= @username %></p>
       <p>Email: <%= @user.email %></p>
-      <p>Password: <%= @user.password %></p>
       <p>Address: <%= @user.address %></p>
       <%= link_to "Edit profile", edit_user_path(@user), class: "btn_edit"%>
     </div>
@@ -23,17 +22,18 @@
   </div>
   <hr>
 
-  <div class="user_interest">
+  <div class="user_interest post-show">
     <div class="row" >
       <div class="col-xs-6">
-        <h2 class="post-show"> Interests </h2>
+        <h4> Interests </h4>
       </div>
-      <div class="col-xs-6">
-        <h4 class="post-show"> Add interests </h4>
+      <div class="col-xs-6 add-interest">
+        <h4> Add interests <i class="fas fa-plus-circle"></i></h4>
+
       </div>
     </div>
 
-    <div class="row" >
+    <div>
       <div class="btn_interests btn">Eat & Drinks</div>
       <div class="btn_interests btn">Sports</div>
       <div class="btn_interests btn">Music</div>
@@ -41,15 +41,20 @@
   </div>
   <hr>
 
-    <div class="user_saved_gems">
-      <h1 class="post-show">Your Favorites Gems</h1>
+    <div class="user_saved_gems post-show">
+      <h4>Your Favorites Gems</h4>
 
   <div class="lalalalal">
       <div class="card_block">
         <% if current_user.favorites.exists? %>
         <% current_user.favorites.each do |favorite| %>
 
+
         <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
+
+          <%= link_to post_favorite_path(favorite.post, favorite), method: :delete do %>
+            <i class="fas fa-heart saved"></i>
+          <% end %>
 
           <div class="card-category-description-location">
             <div class="card-category"><%= favorite.post.category.capitalize %></div>
@@ -61,11 +66,20 @@
             </div>
           </div>
 
-          <i class="fas fa-heart saved"></i>
           <div class="card-rating-status">
-            <div><i class="far fa-clock"></i></div>
-            <div><i class="fas fa-star"></i></div>
+            <div>
+              <% if favorite.post.status == "temporary" %>
+                <i class="far fa-clock"></i>
+              <% end %>
+            </div>
+
+              <% if favorite.post.average != "No ratings" %>
+                <% favorite.post.average.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              <% end %>
           </div>
+
         </div>
         <% end %>
         <% else %>
@@ -76,8 +90,8 @@
   </div>
 
   <hr>
-  <div class="user_gems">
-    <h1 class="post-show"> Your gems </h2>
+  <div class="user_gems post-show">
+    <h4> Your gems </h4>
       <div class="card_block">
         <% if current_user.posts.create! %>
         <% else  %>
@@ -86,6 +100,6 @@
 
       </div>
     </div>
-    <hr>
+
   </div>
 

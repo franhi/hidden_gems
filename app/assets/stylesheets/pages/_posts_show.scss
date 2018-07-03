@@ -23,8 +23,9 @@
   margin-bottom: -25px;
 }
 
-#title {
+.post-info #title {
   font-size: 40px;
+  font-family: Roboto;
   color: grey;
   margin-bottom: -10px;
 }
@@ -57,7 +58,6 @@ hr {
   border-radius: 1px;
   margin-left: 30px;
   margin-top: 40px;
-  height: 300px;
-  width: 600px;
+  width: 450px;
   vertical-align: middle;
 }

@@ -8,7 +8,7 @@ link.addEventListener('change', (event) => {
   {
     const unhide = document.querySelectorAll('.date');
     unhide.forEach(el => el.classList.remove('hide-date'));
-  }  else {
+  } else {
        const unhide = document.querySelectorAll('.date');
     unhide.forEach(el => el.classList.add('hide-date'));
   }
