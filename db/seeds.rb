@@ -13,12 +13,12 @@ require 'faker'
   # Post.delete_all
   # User.destroy_all
 
-
-User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-
+User.skip_callback(:found_address) do
+  User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+  User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+  User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+  User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+end
 # 10.times do
 #   status =  ["temporary", "permanent"].sample
 
@@ -101,7 +101,7 @@ post_list.each_with_index do |hey, i|
      end
     post.save
   end
-
+end
 
 Post.all.each do |post|
   rand(1..15).times  do

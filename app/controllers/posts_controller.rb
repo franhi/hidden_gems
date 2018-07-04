@@ -8,14 +8,22 @@ class PostsController < ApplicationController
         end
 
     elsif params[:tags_on] == "on" && !current_user.address.nil? && !current_user.tags.nil?
+       @user_tag = []
       current_user.tags.each do |tag|
-        @user_tag = tag.name
+        @user_tag << tag.name
       end
       Post.tags.all.each do |tag|
         @post_tag = tag.name
       end
-      @posts = Post.where(@user_tag == @post_tag).near(@coordinates, 10)
-
+      posts = Post.near(@coordinates, 10)
+      @posts = []
+       posts.each do  |post|
+        select_post = false
+         post.tags.each do |tag|
+           select_post = true if @user_tag.include?(tag.name)
+         end
+        @posts << post if select_post
+      end
 
     else
       @posts = Post.where.not(latitude: nil, longitude: nil)
