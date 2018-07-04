@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+  # Report.destroy_all
   # Review.destroy_all
+  # Favorite.destroy_all
   # Post.delete_all
   # User.destroy_all
 
@@ -89,8 +91,9 @@ post_list = [
   ["Duden Park", "Plantations of beech trees cover the steep small valleys and share the 23 hectares of Duden Park with dense underbrush containing maple and ash, with luzula and ferns at their feet", "permanent", "Duden Park", "Brussels", "Belgium", "v1530696523/duden_parl.jpg", "", "", "hobby"]
 ]
 
+
 post_list.each_with_index do |hey, i|
-  post = Post.create!(user_id: 1, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9])
+  post = Post.create!(user: User.all.sample, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9])
   p hey
    if i == 0
      hey[10].each do |tag|
@@ -98,7 +101,7 @@ post_list.each_with_index do |hey, i|
      end
     post.save
   end
-end
+
 
 Post.all.each do |post|
   rand(1..15).times  do
