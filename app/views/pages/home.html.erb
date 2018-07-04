@@ -1,52 +1,49 @@
 <%= render 'shared/banner_home' %>
 
-  <div class="container">
+<div class="container">
+  <div id=<%= 'lat-off' if @coordinates.nil? %>></div>
+  <h1 class="post-show">Popular gems</h1>
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
 
-    <h1 class="post-show">Popular gems</h1>
-    <div class="row">
-      <% @posts.each do |post| %>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
-
-              <div class="card-category-description-location">
-                <div class="card-category"><%= post.category.capitalize unless post.category.nil? %></div>
-                <div class="card-description">
-                  <%= link_to post.title, post_path(post) %>
-                </div>
-                <div class="card-location">
-                  <i class="fas fa-map-marker-alt"></i> <%= post.city %>
-                </div>
-              </div>
-
-              <i class="fas fa-heart saved"></i>
-              <div class="card-rating-status">
-                <div><i class="far fa-clock"></i></div>
-                <div><i class="fas fa-star"></i></div>
-              </div>
-            </div>
+        <div class="card-category-description-location">
+          <div class="card-category"><%= post.category.capitalize unless post.category.nil? %></div>
+          <div class="card-description">
+            <%= link_to post.title, post_path(post) %>
+          </div>
+          <div class="card-location">
+            <i class="fas fa-map-marker-alt"></i> <%= post.city %>
+          </div>
         </div>
-      <% end %>
+
+        <i class="fas fa-heart saved"></i>
+        <div class="card-rating-status">
+          <div><i class="far fa-clock"></i></div>
+          <div><i class="fas fa-star"></i></div>
+        </div>
+      </div>
     </div>
+    <% end %>
   </div>
+</div>
 
 <script>
-function showPosition(position) {
+  function showPosition(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
     var location = [];
     location.push(latitude, longitude);
-    fetch(`/?latitude=${latitude}&longitude=${longitude}`, headers: {"Content-Type": "application/json"})
-    .then(response => response.json())
-    .then((data) => {
-
-      console.log(data);
-    // do something with the json
-  });
-    console.log(location);
+    window.location.href = `/?latitude=${latitude}&longitude=${longitude}` ;
     return location
-}
+  }
 
-window.onload = function() { navigator.geolocation.getCurrentPosition(showPosition)};
+  window.onload = function() {
+    if(document.getElementById('lat-off')){
+      navigator.geolocation.getCurrentPosition(showPosition)
+    }
+  };
 </script>
 
 
