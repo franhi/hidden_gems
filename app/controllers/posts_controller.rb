@@ -1,11 +1,21 @@
 class PostsController < ApplicationController
   def index
     if !current_user.address.nil?
-        @posts = Post.all.near(current_user.address, 10 )
+        @posts = Post.all.near(current_user.address, 5 )
         @posts_map = @posts
         @posts.each do |post|
           @favorite = Favorite.new(post: post, user: current_user)
         end
+
+    elsif params[:tags_on] == "on" && !current_user.address.nil? && !current_user.tags.nil?
+      current_user.tags.each do |tag|
+        @user_tag = tag.name
+      end
+      Post.tags.all.each do |tag|
+        @post_tag = tag.name
+      end
+      @posts = Post.where(@user_tag == @post_tag).near(@coordinates, 10)
+
 
     else
       @posts = Post.where.not(latitude: nil, longitude: nil)
@@ -14,7 +24,6 @@ class PostsController < ApplicationController
         @favorite = Favorite.new(post: post, user: current_user)
       end
     end
-
 
     @markers = @posts_map.map do |post|
       {

@@ -17,13 +17,14 @@ class User < ApplicationRecord
   has_many :user_tags, dependent: :destroy
   has_many :tags, through: :user_tags
 
-  # validate :found_address
+  validate :found_address
 
   private
 
   def found_address
-    Geocoder.search(address).empty?
-    errors.add(:address, "can't be found")
+    if Geocoder.search(self.address).empty?
+      errors.add(:address, "can't be found")
+    end
   end
 end
 

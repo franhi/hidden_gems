@@ -17,7 +17,10 @@ class Post < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_post,
-    against: [ :title, :status, :street, :city, :country, :begin_date, :end_date ],
+    against: [ :title, :status, :street, :category, :city, :country, :begin_date, :end_date ],
+    associated_against: {
+      tags: [ :name ]
+    },
     using: {
       tsearch: { prefix: true }
     }
