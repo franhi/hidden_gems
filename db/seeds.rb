@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-  Report.destroy_all
-  Review.destroy_all
-  Favorite.destroy_all
-  Post.delete_all
-  User.destroy_all
+  # Report.destroy_all
+  # Review.destroy_all
+  # Favorite.destroy_all
+  # Post.delete_all
+  # User.destroy_all
 
 
 
