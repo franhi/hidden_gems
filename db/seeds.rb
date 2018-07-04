@@ -64,7 +64,7 @@ tags.each do |tag|
 end
 
 post_list = [
-  ["Lazy Jack's", "Referring to a part of a boat, Hidden in the port of Antwerp. The sweetspot for hipsters.", "permanent", "kattendijkdok-Oostkaai, 22", "Antwerp", "Belgium", "v1530605708/Lazy_Jack_s.jpg", "", "", "Culture", [Tag.find_by(name: "mind-blowing" ), Tag.find_by(name: "with-a-view")]],
+  ["Lazy Jack's", "Referring to a part of a boat, Hidden in the port of Antwerp. The sweetspot for hipsters.", "permanent", "kattendijkdok-Oostkaai, 22", "Antwerp", "Belgium", "v1530605708/Lazy_Jack_s.jpg", "", "", "Culture", [Tag.find_by(name: "mind-blowing"), Tag.find_by(name: "with-a-view")]],
   ["Black Smoke", "Situated on the rooftop of 'De Koninck's' brewery. The entrance is hidden and the food and drinks are amazing.", "permanent", "Boomgaardstraat, 1", "Antwerp", "Belgium", "v1530605708/Black_Smoke.jpg", "", "", "Eat & drink"],
   ["Vischmijn", "A special way of making beers in which they need no acid. Some say they have de best draft in the world.", "Riemstraat, 20", "Antwerp", "Belgium", "v1530605708/Vischmijn.jpg", "", "", "Eat & drink"],
   ["Nick's Café", "Just a bar you would say, Nick's Café is one of the most visited and know bars by all the locals in Antwerp.", "permanent", "Waalsekaai, 18", "Antwerp", "Belgium", "v1530605708/Nick_s_Café.jpg", "", "", "Eat & drink"],
@@ -79,11 +79,11 @@ post_list = [
   ["Café des Minimes", "Located between the very authentic neighborhoods of Marolles and Sablon, Café des Minimes offers a space where you can relax with friends. Local and seasonal products are showcased and drinks have been selected with special attention. Our wines are all natural while our beers are from micro-breweries. Moreover, the Café des Minimes also wants to be a cultural space where any type of event can take place.", "permanent", "Rue des Minimes, 66", "Brussels", "Belgium", "v1530605708/Cafe_des_minimes.jpg", "", "", "Eat & drink"],
   ["L'Atelier", "Small bar reserved for the true beer lovers with a large selection of trappist beer and seasonal beers, the bar looks usually close (but rarely is!) making this a place where you will meet only a few people and enjoy a timeless atmosphere.", "permanent", "Rue elise, 77", "Ixelles", "Belgium", "v1530605707/L_atelier.jpg", "", "", "Nightlife"],
   ["Poki Poké", "Poké (pronounced poh-kay) is a refreshing seafood salad originating from the islands of Hawaii. The word Poke itself is actually the Hawaiian verb for “section” or to “slice or cut”. Traditionally Poke is made from cuts of tuna or octopus, adding some flavoured rice and several different toppings. At PokiPoké, we decided to give it different forms and you will be able to eat either Poké bowls or Pokirrito", "permanent", "Chaussée d'Ixelles, 331", "Ixelles", "Belgium", "v1530605707/Poki_Poké.jpg", "","", "Eat & drink"],
-  ["Bao bang bang", "Asian street food par excellence, the BAO is a tasty, white, smooth, steamed bun, of which there are many delicious variations in different countries.", "permanent", "Rue de l'Aqueduc,155", "Ixelles", "Belgium", "v1530605707/Bao_bang_bang.jpg", "", "", "Eat & drink"],
+  ["Bao bang bang", "Asian street food par excellence, the BAO is a tasty, white, smooth, steamed bun, of which there are many delicious variations in different countries.", "permanent", "Rue de l'Aqueduc,155", "Ixelles", "Belgium", "v1530605707/Bao_bang_bang.jpg", "", "", "Eat & drink", [Tag.find_by(name: "food")]],
   ["Johnny Velvet", "Clothing store for men and women where upcoming brands are tried out to see the respond of the market, on the verge of trendy brands and unknown brands.", "permanent", "Rue de l'Hôpital, 1", "Brussels", "Belgium", "v1530605707/Johnny_velvet.jpg", "", "", "Shop"],
   ["Caroline record shop", "Expert record shop for vinyls, where you can find everything from second hands records to the latest album released in almost every genre of music.", "permanent", "Boulevard Anspach, 101", "Brussels", "Belgium", "v1530605707/Caroline_record_shop.jpg", "", "", "Shop"],
   ["Le Perroquet", "Spacious corner bar & restaurant with art nouveau-style interior, stained glass & outdoor seating.", "permanent", "Rue Watteeu, 31", "Brussels", "Belgium", "v1530605707/Le_perroquet.jpg", "", "", "Eat & drink"],
-  ["Jam Hotel Rooftop", "Rooftop bar where some summer sales are conducted once a month for local producers of clothing and accessories.", "permanent", "Chaussée de Charleroi, 132", "Brussels", "Belgium", "v1530605706/Jam_Hotel.webp", "", "", "Nightlife"],
+  ["Jam Hotel Rooftop", "Rooftop bar where some summer sales are conducted once a month for local producers of clothing and accessories.", "permanent", "Chaussée de Charleroi, 132", "Brussels", "Belgium", "v1530605706/Jam_Hotel.webp", "", "", "Nightlife", [Tag.find_by(name: "mind-blowing"), Tag.find_by(name: "with-a-view")]],
   ["PLAY-LABEL Rooftop bar", "The rooftop bar is located between two of the most beautiful areas in Brussels, The Sablon and the Marolles, where you can find sets from independent artists playing in B2B.", "temporary", "Boulevard de l’Empereur, 36", "Brussels", "Belgium", "v1530605706/PLAY_LABEL_ROOFTOP_BAR.jpg", "May, 2018", "September, 2018", "Nightlife"],
   ["Casa Mundial", "beautiful place in Brussels to enjoy the world cup with your friends and colleagues. An elegant 19th-century mansion in the Botanique neighbourhood, with a mix a football game and electro set.", "temporary", "Rue Royale, 290", "Brussels", "Belgium", "v1530696516/casa-mundial-futbol-et-electro.jpg", "June, 2018", "July, 2018", "sports" ],
   ["Victor Boin Swimming pool", "Amazing swimming pool newly renovated in a Art-deco style.", "permanent", "Rue de la Perche, 38", "Brussels", "Belgium", "v1530696516/victor_boin_.jpg", "", "", "sports" ],
@@ -94,13 +94,13 @@ post_list = [
 
 post_list.each_with_index do |hey, i|
   post = Post.create!(user: User.all.sample, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9])
-  p hey
-   if i == 0
+   if !hey[10].nil?
      hey[10].each do |tag|
        post.tags << tag
      end
     post.save
   end
+end
 
 
 Post.all.each do |post|
