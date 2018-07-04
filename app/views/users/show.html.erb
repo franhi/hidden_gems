@@ -6,14 +6,13 @@
 
     <div class="profile_pict col-xs-12 col-sm-6 col-lg-5">
       <!-- <img url="https://yt3.ggpht.com/a-/ACSszfGxjQ2zoNjyn0zAtB4SZGHo0eBjQ_tbSO4Xaw=s900-mo-c-c0xffffffff-rj-k-no" class="img-rounded" alt="Cinque Terre"> -->
-      <%= @user.photo.url.nil? ? image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "user-avatar") : cl_image_tag(@user.photo, class: "user-avatar") %>
+      <%= @user.photo.url.nil? ? image_tag("https://avatars3.githubusercontent.com/u/39048473?v=4", class: "user-avatar") : cl_image_tag(@user.photo, class: "user-avatar") %>
       <%#= @user.photo.url.nil? ? cl_image_tag("stanislav-rabunski-642169-unsplash.jpg") : cl_image_tag(@user.photo)%>
     </div>
 
 
     <div class="profile_information col-xs-12 col-sm-6 col-lg-5">
-      <h3> Your profile </h3>
-      <p>Username: Missing so far <%= @username %></p>
+      <h3> <%= current_user.username %> </h3>
       <p>Email: <%= @user.email %></p>
       <p>Address: <%= @user.address %></p>
       <%= link_to "Edit profile", edit_user_path(@user), class: "btn_edit"%>
