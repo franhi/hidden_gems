@@ -8,3 +8,4 @@ const link = document.querySelector("#myBtn");
 };
 
 export { SeeAllReviews };
+
