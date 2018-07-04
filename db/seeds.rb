@@ -13,6 +13,7 @@ require 'faker'
 
 
 
+
 User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
 User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
