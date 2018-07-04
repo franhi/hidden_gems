@@ -5,6 +5,11 @@
     <div>
         <%= form_tag root_path, method: :get do  %>
         <%= text_field_tag :query %>
+        <% if !@coordinates.nil? %>
+        <%= hidden_field_tag :latitude, @coordinates[0] %>
+        <%= hidden_field_tag :longitude,  @coordinates[1] %>
+  <% end %>
+        <%=  %>
         <!-- <button type='submit'> search</button> -->
         <% end %>
         <br>

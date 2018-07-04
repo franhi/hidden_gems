@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   geocoded_by :address
   after_validation :geocode, if: (:will_save_change_to_street? || :will_save_change_to_city? || :will_save_change_to_country?)
@@ -17,7 +17,10 @@ class Post < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_post,
-    against: [ :title, :status, :street, :city, :country, :begin_date, :end_date ],
+    against: [ :title, :status, :street, :category, :city, :country, :begin_date, :end_date ],
+    associated_against: {
+      tags: [ :name ]
+    },
     using: {
       tsearch: { prefix: true }
     }
