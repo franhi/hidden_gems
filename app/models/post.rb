@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  #mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   geocoded_by :address
   after_validation :geocode, if: (:will_save_change_to_street? || :will_save_change_to_city? || :will_save_change_to_country?)

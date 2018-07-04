@@ -1,43 +1,45 @@
 class PostsController < ApplicationController
   def index
-    if !current_user.address.nil?
-        @posts = Post.all.near(current_user.address, 5 )
-        @posts_map = @posts
-        @posts.each do |post|
-          @favorite = Favorite.new(post: post, user: current_user)
-        end
-
-    elsif params[:tags_on] == "on" && !current_user.address.nil? && !current_user.tags.nil?
-       @user_tag = []
+    if params[:tags_off].nil? && !current_user.tags.empty? && !current_user.address.nil?
+      @user_tag = []
       current_user.tags.each do |tag|
         @user_tag << tag.name
       end
-      Post.tags.all.each do |tag|
-        @post_tag = tag.name
-      end
-      posts = Post.near(@coordinates, 10)
+      posts = Post.near(current_user.address, 20)
       @posts = []
-       posts.each do  |post|
+      posts.each do  |post|
         select_post = false
-         post.tags.each do |tag|
+        post.tags.each do |tag|
            select_post = true if @user_tag.include?(tag.name)
          end
         @posts << post if select_post
       end
 
+      @posts.each do |post|
+        @favorite = Favorite.new(post: post, user: current_user)
+      end
+
+    elsif params[:tags_off] == "off" && !current_user.address.nil?
+        @posts = Post.all.near(current_user.address, 5 )
+        @posts_map = @posts
+        @posts.each do |post|
+          @favorite = Favorite.new(post: post, user: current_user)
+        end
     else
       @posts = Post.where.not(latitude: nil, longitude: nil)
-      @posts_map = @posts
       @posts.each do |post|
         @favorite = Favorite.new(post: post, user: current_user)
       end
     end
+      @posts_map = @posts
 
-    @markers = @posts_map.map do |post|
-      {
-        lat: post.latitude,
-        lng: post.longitude,
-      }
+    if !@posts.empty?
+      @markers = @posts_map.map do |post|
+        {
+          lat: post.latitude,
+          lng: post.longitude,
+        }
+      end
     end
   end
 
@@ -54,7 +56,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-  if @post.save!
+    if @post.save!
       redirect_to new_post_post_tag_path(@post)
     else
       render :new
@@ -86,5 +88,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :street, :city, :country, :description, :photo, :status, :begin_date, :end_date)
   end
-
 end

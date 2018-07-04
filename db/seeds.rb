@@ -13,12 +13,12 @@ require 'faker'
   # Post.delete_all
   # User.destroy_all
 
-User.skip_callback(:found_address) do
-  User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-  User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-  User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-  User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
-end
+
+User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+User.create!(email: "francois@francois.com", username: "Francois", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+User.create!(email: "john@john.com", username: "John", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
+
 # 10.times do
 #   status =  ["temporary", "permanent"].sample
 
@@ -66,7 +66,7 @@ end
 post_list = [
   ["Lazy Jack's", "Referring to a part of a boat, Hidden in the port of Antwerp. The sweetspot for hipsters.", "permanent", "kattendijkdok-Oostkaai, 22", "Antwerp", "Belgium", "v1530605708/Lazy_Jack_s.jpg", "", "", "Culture", [Tag.find_by(name: "mind-blowing"), Tag.find_by(name: "with-a-view")]],
   ["Black Smoke", "Situated on the rooftop of 'De Koninck's' brewery. The entrance is hidden and the food and drinks are amazing.", "permanent", "Boomgaardstraat, 1", "Antwerp", "Belgium", "v1530605708/Black_Smoke.jpg", "", "", "Eat & drink"],
-  ["Vischmijn", "A special way of making beers in which they need no acid. Some say they have de best draft in the world.", "Riemstraat, 20", "Antwerp", "Belgium", "v1530605708/Vischmijn.jpg", "", "", "Eat & drink"],
+  ["Vischmijn", "A special way of making beers in which they need no acid. Some say they have de best draft in the world.", "permanent", "Riemstraat, 20", "Antwerp", "Belgium", "v1530605708/Vischmijn.jpg", "", "", "Eat & drink"],
   ["Nick's Café", "Just a bar you would say, Nick's Café is one of the most visited and know bars by all the locals in Antwerp.", "permanent", "Waalsekaai, 18", "Antwerp", "Belgium", "v1530605708/Nick_s_Café.jpg", "", "", "Eat & drink"],
   ["Jardim", "a pop-up bar, build out of black containers with a view on the Schelde", "permanent", "Scheldekaai, 28", "Antwerp", "Belgium", "v1530605708/Jardim.jpg", "", "", "Nightlife"],
   ["Vlaeykensgang", "A medieval alley, hedden near the town hall of Antwerp", "permanent", "Oude Koornmarkt, 16", "Antwerp", "Belgium", "v1530605708/Vlaeykensgang.jpg", "", "", "Nightlife"],

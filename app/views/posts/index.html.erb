@@ -2,7 +2,7 @@
 
 <div class="content">
   <div class="container">
-    <h1 class="post-show">Your local gems</h1> &nbsp; <%= link_to "My Tags", posts_path(tags_on: 'on') %>
+    <h1 class="post-show">Your local gems</h1> &nbsp; <%= link_to "All Posts around you", posts_path(tags_off: 'off') %>
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
