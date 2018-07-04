@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+  Report.destroy_all
   Review.destroy_all
+  Favorite.destroy_all
   Post.delete_all
   User.destroy_all
 
@@ -79,7 +81,7 @@ post_list = [
 ]
 
 post_list.each do |hey|
-  Post.create!(user_id: 1, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9] )
+  Post.create!(user: User.all.sample, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9] )
 end
 
 Post.all.each do |post|
