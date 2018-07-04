@@ -74,9 +74,22 @@
 .container_user_profile hr {
   margin-bottom: 10px;
 }
-.add-interest h4 {
+.add-interest {
   color: $orange;
   font-weight: lighter;
   text-align: right;
+  background-color: transparent !important;
+  font-size: 16px;
+  &:hover {
+    color: $orange;
+    text-decoration: underline;
+  }
+}
+
+.fa-plus-circle {
+  color: $orange;
+  padding: 0px;
+  margin-left: -10px;
+  margin-bottom: 10px;
 }
 
