@@ -7,11 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-  # Report.destroy_all
-  # Review.destroy_all
-  # Favorite.destroy_all
-  # Post.delete_all
-  # User.destroy_all
+  Report.destroy_all
+  Review.destroy_all
+  Favorite.destroy_all
+  TagPost.destroy_all
+  TagUser.destroy_all
+  Tag.destroy_all
+  Post.delete_all
+  User.destroy_all
 
 
 User.create!(email: "irma@irma.com", username: "Irma", password: "lewagon", address: "Cantersteen 10, 1000 Bruxelles")
