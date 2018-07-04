@@ -13,7 +13,15 @@ class PagesController < ApplicationController
     else
       @posts = Post.all
     end
+
+
+    @markers = @posts.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude,
+      }
   end
+ end
 end
 
 

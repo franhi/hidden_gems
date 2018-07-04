@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
-    resources :user_tags, only:[ :create, :destroy ]
+    resources :user_tags, only:[ :new, :create, :destroy ]
   end
   resources :posts do
     resources :reports, only: [ :new, :create, :destroy ]
     resources :favorites, only: [ :create, :destroy ]
-    resources :post_tags, only:[ :create, :destroy ]
+    resources :post_tags, only:[ :new, :create, :destroy ]
     resources :reviews, only: [ :new, :create, :destroy, :show] do
       member do
         put "like", to: "reviews#upvote"

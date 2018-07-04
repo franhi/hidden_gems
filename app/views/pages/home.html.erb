@@ -1,33 +1,145 @@
 <%= render 'shared/banner_home' %>
 
-<div class="container">
-  <div id=<%= 'lat-off' if @coordinates.nil? %>></div>
-  <h1 class="post-show">Popular gems</h1>
-  <div class="row">
-    <% @posts.each do |post| %>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
 
-        <div class="card-category-description-location">
-          <div class="card-category"><%= post.category.capitalize unless post.category.nil? %></div>
-          <div class="card-description">
-            <%= link_to post.title, post_path(post) %>
-          </div>
-          <div class="card-location">
-            <i class="fas fa-map-marker-alt"></i> <%= post.city %>
-          </div>
-        </div>
+  <div class="banner-color home">
 
-        <i class="fas fa-heart saved"></i>
-        <div class="card-rating-status">
-          <div><i class="far fa-clock"></i></div>
-          <div><i class="fas fa-star"></i></div>
-        </div>
-      </div>
+    <div class="intro-text text-center">
+
+      <i class="far fa-lightbulb"></i>
+
+      <h4>Discover</h4>
+
+      <p>Discover new gems in your area</p>
+
     </div>
-    <% end %>
+
+    <div class="intro-text text-center">
+
+      <i class="fa fa-share"></i>
+
+      <h4>Share</h4>
+
+      <p>Share your favorite places with your local community</p>
+
+    </div>
+
+    <div class="intro-text text-center">
+
+      <i class="far fa-heart"></i>
+
+      <h4>Like</h4>
+
+      <p>Save your favorite places in your profile</p>
+
+    </div>
+
+
+
   </div>
-</div>
+
+  <div class="container">
+  <div id=<%= 'lat-off' if @coordinates.nil? %>></div>
+
+
+    <h1 class="post-show">Gems near you</h1>
+
+    <div class="row">
+
+      <% @posts.each do |post| %>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+
+
+          <% if post.favorites.where(user_id: current_user)[0].blank? || post.favorites.where(user_id: current_user)[0].nil?%>
+
+            <%= link_to post_favorites_path(post), method: :post do %>
+
+              <i class="far fa-heart saved"></i>
+
+            <% end %>
+
+          <% else %>
+
+            <% hey = post.favorites.where(user_id: current_user)[0].id %>
+
+            <%= link_to post_favorite_path(post, hey), method: :delete do %>
+
+              <i class="fas fa-heart saved"></i>
+
+            <% end %>
+
+          <% end %>
+
+
+
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
+
+
+
+              <div class="card-category-description-location">
+
+                <div class="card-category"><%= post.category.capitalize unless post.category.nil? %></div>
+
+                <div class="card-description">
+
+                  <%= link_to post.title, post_path(post) %>
+
+                </div>
+
+                <div class="card-location">
+
+                  <i class="fas fa-map-marker-alt"></i> <%= post.city %>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="card-rating-status">
+
+                <div>
+
+                  <% if post.status == "temporary" %>
+
+                    <i class="far fa-clock"></i>
+
+                  <% end %>
+
+                </div>
+
+
+
+                  <div>
+
+                  <% if post.average != "No ratings" %>
+
+                    <% post.average.times do %>
+
+                      <i class="fas fa-star"></i>
+
+                    <% end %>
+
+                  <% end %>
+
+                </div>
+
+              </div>
+
+            </div>
+
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+  <div id="map" class="home" data-markers="<%= @markers.to_json %>">
+  </div>
+  <%= render 'shared/footer' %>
 
 <script>
   function showPosition(position) {
@@ -45,5 +157,7 @@
     }
   };
 </script>
+
+
 
 

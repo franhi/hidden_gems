@@ -16,6 +16,11 @@
   margin-top: 100px;
 }
 
+.container_user_profile {
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
 .card_block {
 
   display: flex;
@@ -31,16 +36,47 @@
 }
 
 .about_user.row {
+  margin-top: 25px;
+}
+
+.user_interest {
 }
 
 .user-avatar {
-  width: 100px;
-  border-radius: 50%;
-  vertical-align: none;
+  width: 150px;
+  border-radius: 5px;
   margin-top: 25px;
 
 }
 .profile_information {
+  p {
+    margin-bottom: 0px;
+  }
+  h3 {
+    font-family: Lobster;
+    color: $orange;
+  }
+}
 
+.post-show h4 {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  color: grey;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.user_saved_gems h3 {
+  color: grey;
+  margin-top: 0px;
+}
+
+.container_user_profile hr {
+  margin-bottom: 10px;
+}
+.add-interest h4 {
+  color: $orange;
+  font-weight: lighter;
+  text-align: right;
 }
 
