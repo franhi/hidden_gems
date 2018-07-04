@@ -1,12 +1,11 @@
- <%= render 'shared/banner_other' %>
+ <%= render 'shared/banner_posts_show' %>
  <br>
 
  <div class="col-xs-12 col-sm-6 col-lg-6" id="left-block">
 
   <div>
    <%= link_to new_post_report_path(@post) do %>
-   <i class="fas fa-flag"></i>
-   <p>report this post</p>
+   <i class="fas fa-flag" title="report this post"></i>
    <% end %>
   </div>
 
@@ -24,10 +23,14 @@
        <div class="btn_interests btn"><%= tag.name.capitalize %></div>
       <% end %>
   </div>
-
+    <p></p>
     <p> <%= @post.description %> </p>
 
-    <div class="reviews-box">
+
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-lg-5">
+     <div class="reviews-box">
       <div class="reviews-content">
         <h4> Reviews
           <% if @average != "No ratings" || @average.nil? %>
@@ -64,9 +67,5 @@
         <%= link_to "Review this gem", new_post_review_path(@post) %>
       </div>
     </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-6 col-lg-5">
-    <%= @post.photo.nil? ? cl_image_tag("benjamin-zanatta-545376-unsplash-c_crop.jpg", class: "show-avatar") : cl_image_tag(@post.photo, class: "show-avatar") %>
   </div>
 
