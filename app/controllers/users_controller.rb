@@ -4,8 +4,20 @@ class UsersController < ApplicationController
     # @post = current_user.save
   end
 
+
   def show
     @user = current_user
+    @user_tag = UserTag.new
+  end
+
+  def create
+    @user_tag = UserTag.new(user_tag_params)
+    @user_tag.user = current_user
+    if @user_tag.save!
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,4 +41,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :address, :photo_cache)
   end
 
+  def user_tag_params
+    params.require(:user_tag).permit(:tag_id, :user_id)
+  end
 end
