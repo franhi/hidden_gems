@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+  # Report.destroy_all
   # Review.destroy_all
+  # Favorite.destroy_all
   # Post.delete_all
   # User.destroy_all
 
@@ -49,11 +51,20 @@ User.create!(email: "erland@erland.com", username: "Erland", password: "lewagon"
 
 # tag seed creation to add on post and add on user
 
+# ADD TAGS FOR EACH POST
+
 
 puts "Creating posts"
 
+# tag list for post
+tags = ["fun", "culture", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks", "yummy-yummy", "with-a-view", "sunday-chilling", "TGIF", "love-books", "stays forever", "starchitects", "monk beers", "crafty", "gemmy-gem!"]
+
+tags.each do |tag|
+  Tag.create!(name: tag)
+end
+
 post_list = [
-  ["Lazy Jack's", "Referring to a part of a boat, Hidden in the port of Antwerp. The sweetspot for hipsters.", "permanent", "kattendijkdok-Oostkaai, 22", "Antwerp", "Belgium", "v1530605708/Lazy_Jack_s.jpg", "", "", "Culture"],
+  ["Lazy Jack's", "Referring to a part of a boat, Hidden in the port of Antwerp. The sweetspot for hipsters.", "permanent", "kattendijkdok-Oostkaai, 22", "Antwerp", "Belgium", "v1530605708/Lazy_Jack_s.jpg", "", "", "Culture", [Tag.find_by(name: "mind-blowing" ), Tag.find_by(name: "with-a-view")]],
   ["Black Smoke", "Situated on the rooftop of 'De Koninck's' brewery. The entrance is hidden and the food and drinks are amazing.", "permanent", "Boomgaardstraat, 1", "Antwerp", "Belgium", "v1530605708/Black_Smoke.jpg", "", "", "Eat & drink"],
   ["Vischmijn", "A special way of making beers in which they need no acid. Some say they have de best draft in the world.", "Riemstraat, 20", "Antwerp", "Belgium", "v1530605708/Vischmijn.jpg", "", "", "Eat & drink"],
   ["Nick's Café", "Just a bar you would say, Nick's Café is one of the most visited and know bars by all the locals in Antwerp.", "permanent", "Waalsekaai, 18", "Antwerp", "Belgium", "v1530605708/Nick_s_Café.jpg", "", "", "Eat & drink"],
@@ -73,12 +84,24 @@ post_list = [
   ["Caroline record shop", "Expert record shop for vinyls, where you can find everything from second hands records to the latest album released in almost every genre of music.", "permanent", "Boulevard Anspach, 101", "Brussels", "Belgium", "v1530605707/Caroline_record_shop.jpg", "", "", "Shop"],
   ["Le Perroquet", "Spacious corner bar & restaurant with art nouveau-style interior, stained glass & outdoor seating.", "permanent", "Rue Watteeu, 31", "Brussels", "Belgium", "v1530605707/Le_perroquet.jpg", "", "", "Eat & drink"],
   ["Jam Hotel Rooftop", "Rooftop bar where some summer sales are conducted once a month for local producers of clothing and accessories.", "permanent", "Chaussée de Charleroi, 132", "Brussels", "Belgium", "v1530605706/Jam_Hotel.webp", "", "", "Nightlife"],
-  ["PLAY-LABEL Rooftop bar", "The rooftop bar is located between two of the most beautiful areas in Brussels, The Sablon and the Marolles, where you can find sets from independent artists playing in B2B.", "temporary", "Boulevard de l’Empereur, 36", "Brussels", "Belgium", "v1530605706/PLAY_LABEL_ROOFTOP_BAR.jpg", "May, 2018", "September, 2018", "Nightlife"]
+  ["PLAY-LABEL Rooftop bar", "The rooftop bar is located between two of the most beautiful areas in Brussels, The Sablon and the Marolles, where you can find sets from independent artists playing in B2B.", "temporary", "Boulevard de l’Empereur, 36", "Brussels", "Belgium", "v1530605706/PLAY_LABEL_ROOFTOP_BAR.jpg", "May, 2018", "September, 2018", "Nightlife"],
+  ["Casa Mundial", "beautiful place in Brussels to enjoy the world cup with your friends and colleagues. An elegant 19th-century mansion in the Botanique neighbourhood, with a mix a football game and electro set.", "temporary", "Rue Royale, 290", "Brussels", "Belgium", "v1530696516/casa-mundial-futbol-et-electro.jpg", "June, 2018", "July, 2018", "sports" ],
+  ["Victor Boin Swimming pool", "Amazing swimming pool newly renovated in a Art-deco style.", "permanent", "Rue de la Perche, 38", "Brussels", "Belgium", "v1530696516/victor_boin_.jpg", "", "", "sports" ],
+  ["Brasserie verschuren", "Art deco establishment with a great atmosphere located in Parvis Saint Gilles wwith an offer of local beers from micro-breweries.", "permanent", "Sint-Gillisvoorplein 11", "Brussels", "Belgium", "v1530696516/brasserie_Verschueren.jpg", "", "", "drinks"],
+  ["Duden Park", "Plantations of beech trees cover the steep small valleys and share the 23 hectares of Duden Park with dense underbrush containing maple and ash, with luzula and ferns at their feet", "permanent", "Duden Park", "Brussels", "Belgium", "v1530696523/duden_parl.jpg", "", "", "hobby"]
 ]
 
-post_list.each do |hey|
-  Post.create!(user_id: 1, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9] )
-end
+
+post_list.each_with_index do |hey, i|
+  post = Post.create!(user: User.all.sample, title: hey[0], description: hey[1], status: hey[2], street: hey[3], city: hey[4], country: hey[5], photo: hey[6], begin_date: hey[7], end_date: hey[8], category: hey[9])
+  p hey
+   if i == 0
+     hey[10].each do |tag|
+       post.tags << tag
+     end
+    post.save
+  end
+
 
 Post.all.each do |post|
   rand(1..15).times  do
@@ -111,10 +134,3 @@ end
 # Favorite.create!(user_id: 4, post_id: 8)
 # Favorite.create!(user_id: 4, post_id: 10)
 
-
-# tag list for post
-tags = ["fun", "culture", "sports", "hobby", "design", "art", "mind-blowing", "music", "relax", "food", "drinks", "yummy-yummy", "with-a-view", "sunday-chilling", "TGIF", "love-books", "stays forever", "starchitects", "monk beers", "crafty", "gemmy-gem!"]
-
-tags.each do |tag|
-  Tag.create!(name: tag)
-end
