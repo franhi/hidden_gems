@@ -73,7 +73,7 @@
 
 
 
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= post.photo.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(post.photo)%>);">
 
 
 

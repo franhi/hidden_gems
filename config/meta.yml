@@ -1,0 +1,5 @@
+meta_product_name: "Hidden Gem"
+meta_title: "Hidden Gem - Re-live locally"
+meta_description: "Relevant description"
+meta_image: "gem-200x200px.png"                       # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"
