@@ -8,6 +8,9 @@
   color: $orange;
   border: $orange;
   border: 1px solid $orange;
+  &:hover {
+    color: $orange;
+  }
   // outline-color: $orange;
 }
 
@@ -91,5 +94,16 @@
   padding: 0px;
   margin-left: -10px;
   margin-bottom: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.fa-times-circle {
+  color: lightgrey;
+  &:hover {
+    color: $orange;
+  }
 }
 
