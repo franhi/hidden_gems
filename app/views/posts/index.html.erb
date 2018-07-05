@@ -2,7 +2,13 @@
 
 <div class="content">
   <div class="container">
-    <h1 class="post-show">Your local gems</h1> &nbsp; <%= link_to "All Posts around you", posts_path(tags_off: 'off') %>
+    <h1 class="post-show">Your local gems</h1> &nbsp;
+   <% if params[:tags_off].nil? && !current_user.tags.empty? && !current_user.address.nil? %>
+    <%= link_to "All Gems around you", posts_path(tags_off: 'off'),class: "btn_interests btn" %>
+    <% else %>
+    <%= link_to "Gems mined for you", posts_path, class: "btn_interests btn"%>
+    <% end %>
+
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
