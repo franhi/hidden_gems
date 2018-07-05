@@ -43,12 +43,12 @@
 
 #left-block h4 {
   color: grey;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 #left-block p {
   color: $gray;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 hr {
@@ -71,4 +71,8 @@ hr {
   margin-top: 40px;
   width: 450px;
   vertical-align: middle;
+}
+
+.description p {
+  margin-top: 40px;
 }
