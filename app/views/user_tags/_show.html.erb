@@ -1,0 +1,6 @@
+<div class="btn_interests btn delete-cross">
+  <%= tag.name.capitalize %>
+  <%= link_to user_user_tag_path(current_user, user_tag), method: :delete, remote: true do %>
+    <i class="fas fa-times-circle"></i>
+  <% end %>
+</div>

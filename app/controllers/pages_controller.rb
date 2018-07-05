@@ -17,13 +17,15 @@ class PagesController < ApplicationController
     @posts = Post.search_post(params[:query]).near(@coordinates, 5)
 
    end
-
     if !@posts.empty?
-      @markers = @posts.map do |post|
-      {
+      @markers = []
+      @posts.map do |post|
+        unless post.latitude.nil?
+      @markers  <<  {
         lat: post.latitude,
         lng: post.longitude,
       }
+    end
       end
     end
  end

@@ -1,2 +1,11 @@
-const interest = document.getElementById('btn_interests');
-interest.classList.add('hide');
+// const interest = document.getElementById('btn_interests');
+// interest.classList.add('hide');
+
+
+document.querySelectorAll(".delete-cross").forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      btn.classList.add('hide');
+    });
+  });
+
+

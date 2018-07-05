@@ -1,0 +1,18 @@
+function refreshForm(innerHTML) {
+  const newUserTagForm = document.getElementById('btn_interests');
+  newUserTagForm.innerHTML = innerHTML;
+}
+
+function addTag(reviewHTML) {
+  if(document.getElementById('btn_interests')) {
+    const btn_interests = document.getElementById('btn_interests');
+    btn_interests.insertAdjacentHTML('afterend', reviewHTML);
+  } else {
+    const btn_interests = document.getElementById('no-interest');
+    btn_interests.insertAdjacentHTML('afterend', reviewHTML);
+    btn_interests.classList.add('hide');
+  }
+}
+
+  addTag('<%= j render "user_tags/show", tag: current_user.tags.last, user_tag: current_user.user_tags.last %>');
+

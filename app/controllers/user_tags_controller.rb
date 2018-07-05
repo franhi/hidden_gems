@@ -8,20 +8,25 @@ class UserTagsController < ApplicationController
     @user_tag = UserTag.new(user_tag_params)
     @user_tag.user = current_user
     if @user_tag.save!
-      redirect_to user_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'users/show' }
+        format.js  # <-- idem
+      end
     end
   end
 
   def destroy
     @user_tag = UserTag.find(params[:id])
-    @user_tag.destroy
-
     respond_to do |format|
         format.html { redirect_to user_path(current_user) }
         format.js
     end
+    @user_tag.destroy
   end
 end
 
