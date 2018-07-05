@@ -20,7 +20,7 @@ class PagesController < ApplicationController
 
 
     if !@posts.empty?
-      @markers = @posts.map do |post|
+      @markers = @posts.each do |post|
       {
         lat: post.latitude,
         lng: post.longitude,

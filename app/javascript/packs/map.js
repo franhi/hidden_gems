@@ -5,6 +5,8 @@ if (mapElement) {
   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const markers = JSON.parse(mapElement.dataset.markers);
   map.addMarkers(markers);
+  console.log(markers.length);
+  console.log(markers[markers.length - 1]);
   if (markers.length === 0) {
     map.setZoom(2);
   } else if (markers.length === 1) {
