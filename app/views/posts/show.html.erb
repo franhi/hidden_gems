@@ -9,12 +9,14 @@
    <% end %>
   </div>
 
-  <div class="post-info">
+  <div class="post-info show-page">
     <h3 id="category"> <%= @post.category %> </h3>
     <h1 id="title"> <%= @post.title %> </h1>
 
     <h4> <i class="fa fa-map-marker-alt"></i> <%= @post.city %> </h4>
   </div>
+
+  <p> <%= @post.address %> </p>
 
   <!-- tags -->
 
@@ -23,8 +25,9 @@
        <div class="btn_interests btn"><%= tag.name.capitalize %></div>
       <% end %>
   </div>
-    <p></p>
+  <div class="description">
     <p> <%= @post.description %> </p>
+  </div>
 
 
   </div>
