@@ -32,7 +32,7 @@
 
   <div class="tag-interest">
     <% if current_user.tags.blank? %>
-        <h4 id="no-interest">Hi <%= current_user.username %>, select your first interst and start mining gems!</h4>
+        <p id="no-interest">Hi <%= current_user.username %>, select your first interst and start mining gems!</p>
       <% else %>
         <% current_user.user_tags.each do |user_tag| %>
          <div class="btn_interests btn delete-cross" id="btn_interests"><%= user_tag.tag.name.capitalize %>
@@ -99,17 +99,15 @@
   </div>
 
 
-  <hr>
-  <div class="user_gems post-show">
+<!--   <hr>
+ -->  <!-- <div class="user_gems post-show">
     <h4> Your gems </h4>
       <div class="card_block">
-        <% if current_user.posts.create! %>
-        <% else  %>
-        <% end %>
+
 
       </div>
     </div>
-
+ -->
   </div>
 
 

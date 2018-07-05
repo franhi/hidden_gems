@@ -1,10 +1,22 @@
 h1 {
-  font-family: Lobster;
+  font-family: $main-font;
   font-size: 30px;
   color: $orange;
+  font-weight: 700;
 }
 
 
 body {
   color: grey;
+}
+
+.intro-text {
+  h4 {
+    font-family: $main-font;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  p {
+    font-weight: 300;
+  }
 }
