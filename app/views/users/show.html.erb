@@ -34,7 +34,7 @@
     <div>
 
       <% current_user.tags.each do |tag| %>
-       <div class="btn_interests btn"><%= tag.name.capitalize %></div>
+       <div class="btn_interests btn"><%=link_to tag.name.capitalize %></div>
       <% end %>
     </div>
   </div>
@@ -60,7 +60,7 @@
         <% current_user.favorites.each do |favorite| %>
 
 
-        <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
+        <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
 
           <%= link_to post_favorite_path(favorite.post, favorite), method: :delete do %>
             <i class="fas fa-heart saved"></i>

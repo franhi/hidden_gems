@@ -25,6 +25,12 @@ class PostsController < ApplicationController
         @posts.each do |post|
           @favorite = Favorite.new(post: post, user: current_user)
         end
+    elsif current_user.tags.empty? && !current_user.address.nil? && params[:tags_off].nil?
+        @posts = Post.all.near(current_user.address, 5 )
+        @posts_map = @posts
+        @posts.each do |post|
+          @favorite = Favorite.new(post: post, user: current_user)
+        end
     else
       @posts = Post.where.not(latitude: nil, longitude: nil)
       @posts.each do |post|
