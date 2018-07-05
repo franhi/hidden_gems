@@ -1,0 +1,5 @@
+meta_product_name: "Hidden Gem"
+meta_title: "Re-live locally"
+meta_description: "Rediscover your neighbourhood and reconnect to your local community"
+meta_image: "Hidden-gem-1200x630px.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@erlandvr"
