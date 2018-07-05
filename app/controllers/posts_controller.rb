@@ -46,6 +46,13 @@ class PostsController < ApplicationController
           lng: post.longitude,
         }
       end
+      if !current_user.address.nil?
+      @markers <<  {
+          lat: current_user.latitude,
+          lng: current_user.longitude,
+          icon: 'https://res.cloudinary.com/dxe7a5los/image/upload/v1530801857/blue_MarkerA.png'
+        }
+      end
     end
   end
 
