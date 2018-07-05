@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   root to: 'pages#home'
   # get 'users', to: 'pages#user_profile', as: :user
@@ -21,3 +22,5 @@ Rails.application.routes.draw do
     end
   end
 end
+
+
