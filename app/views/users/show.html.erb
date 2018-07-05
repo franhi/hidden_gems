@@ -21,30 +21,38 @@
   </div>
   <hr>
 
+
+
   <div class="user_interest post-show">
     <div class="row" >
       <div class="col-xs-6">
-        <h4> Interests </h4>
-      </div>
-      <div class="col-xs-6 add-interest">
-        <%= link_to new_user_user_tag_path(@user) do %>
-          <h4>Add interests <i class="fas fa-plus-circle"></i></h4>
-        <% end %>
-
-        </h4>
-
+        <h4> Your interests </h4>
       </div>
     </div>
-
     <div>
 
-      <% current_user.tags.each do |tag| %>
-       <div class="btn_interests btn"><%= tag.name.capitalize %></div>
+      <% current_user.user_tags.each do |user_tag| %>
+       <div class="btn_interests btn" id="btn_interests"><%= user_tag.tag.name.capitalize %>
+         <%= link_to user_user_tag_path(current_user, user_tag), method: :delete, remote: true do %>
+            <i class="fas fa-times-circle"></i>
+         <% end %>
+       </div>
       <% end %>
     </div>
   </div>
-  <hr>
 
+  <br>
+  <div>
+    <%= simple_form_for [current_user, @user_tag] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <%= f.select :tag_id, Tag.all.map { |i| [i.name, i.id ] } %>
+          <%= f.button :submit, "Add interest", class: "add-interest" %><i class="fas fa-plus-circle"></i>
+      <% end %>
+    </div>
+
+  <hr>
     <div class="user_saved_gems post-show">
       <h4>Your Favorites Gems</h4>
 
@@ -54,7 +62,7 @@
         <% current_user.favorites.each do |favorite| %>
 
 
-        <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.url.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
+        <div class="card user" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= favorite.post.photo.nil? ? cl_image_path("stanislav-rabunski-642169-unsplash.jpg") : cl_image_path(favorite.post.photo)%>);">
 
           <%= link_to post_favorite_path(favorite.post, favorite), method: :delete do %>
             <i class="fas fa-heart saved"></i>
@@ -93,17 +101,19 @@
     </div>
   </div>
 
+
   <hr>
   <div class="user_gems post-show">
     <h4> Your gems </h4>
       <div class="card_block">
         <% if current_user.posts.create! %>
         <% else  %>
-          <% "We know you know some gems too, don't hesitate to share them :)" %>
         <% end %>
 
       </div>
     </div>
 
   </div>
+
+
 

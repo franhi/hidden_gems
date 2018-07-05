@@ -1,15 +1,23 @@
 #left-block{
-  margin-left: 30px;
+  margin-left: 76px;
+  postition: relative;
+  text-align: left;
 }
-
-
+.fa-flag{
+  position: absolute;
+  right: 50px;
+  top: 30px;
+}
 .reviews-box {
+  height: 47vh;
   border-style: solid;
   border-width: 2px 2px 2px 2px;
   border-color: $gray;
   border-radius: 5px;
   border-bottom: solid;
   margin-bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
 }
 

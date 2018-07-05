@@ -10,6 +10,11 @@ require 'faker'
   Report.destroy_all
   Review.destroy_all
   Favorite.destroy_all
+
+  PostTag.destroy_all
+  UserTag.destroy_all
+  Tag.destroy_all
+
   Post.delete_all
   User.destroy_all
 
