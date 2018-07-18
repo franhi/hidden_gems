@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
   def index
+    # if the tags are on by users choice, the users has tags chosen in his profile and we know the users address
     if params[:tags_off].nil? && !current_user.tags.empty? && !current_user.address.nil?
+      # we create an empty array
       @user_tag = []
+      # we iterate over all the tags chosen by this user
       current_user.tags.each do |tag|
+        # we put these tag names in to the empty array
         @user_tag << tag.name
       end
       posts = Post.near(current_user.address, 20)
